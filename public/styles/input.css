@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@300&display=swap');
+
+/*Colors*/
+:root {
+    --black: #000000;
+    --gray: #FFFFFF;
+    --purple: #B791FC;
+}
+
+.gray {
+    color: #FFFFFF;
+}
+
+.black {
+    color: #000000;
+}
+
+.purple {
+    color: #B791FC;
+}
+
+/*Font-Sizes*/
+.head3 {
+    font-size: 40px;
+}
+
+.head4 {
+    font-size: 30px;
+}
+
+/*Font-Families*/
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.openSans {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+}
+
+/* Some height and width properties */
+.height-x {
+    height: 75px;
+}
+
+/*Scroll-Bar*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f100;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888888;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/*Container containing the inital input portion*/
+.inputSection {
+    width: 1440px;
+    margin: auto;
+    padding-top: 125px;
+}
+
+/*The complete page*/
+.section1 {
+    height: 100vh;
+    background-color: var(--black);
+}
+
+/*part-1 code*/
+.part1 {
+    display: flex;
+    justify-content: space-between;
+
+    height: 75px;
+    padding: 0px 10px;
+}
+
+/* The Size container */
+.container {
+    display: inline;
+    position: relative;
+    padding-left: 63px;
+    margin-bottom: 12px;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    background-color: var(--gray);
+    border-radius: 50%;
+}
+
+.container:hover input~.checkmark {
+    background-color: var(--gray);
+}
+
+.container input:checked~.checkmark {
+    background-color: var(--purple);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    top: 12.5px;
+    left: 12.5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: white;
+}
+
+/*Pop-Up*/
+.container {
+    position: relative;
+    top: -10px;
+    display: inline-block;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: -80px;
+    left: -30px;
+    /* Adjust the value as needed */
+}
+
+.container:hover .popup {
+    display: block;
+}
+
+/*part-2 code*/
+.part2 {
+    width: 100%;
+    border: 5px solid var(--purple);
+    border-radius: 10px;
+
+    box-sizing: border-box;
+}
+
+.part2 textarea {
+    height: 720px;
+    width: 100%;
+
+    background-color: var(--gray);
+
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+
+.part2 div {
+    background-color: var(--gray);
+}
+
+.part2>div:first-child {
+    height: 55px;
+    padding: 10px 10px;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 5px solid var(--black);
+}
+
+
+.part2>div:last-child {
+    height: 55px;
+    padding: 10px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+/*part-3 code*/
+.part3 {
+    display: flex;
+    justify-content: space-between;
+
+    height: 100px;
+
+    padding: 20px 0px;
+}
+
+.part3 .btn {
+    padding: 10px 30px;
+    background-color: var(--black);
+    border: 5px solid var(--purple);
+    border-radius: 38.5px;
+    transition: all 0.2s ease-in;
+}
+
+.part3 .btn:hover {
+    background-color: var(--purple);
+    color: var(--black);
+}
+
+
+@media (max-width: 1600px)
+{
+    /*Font-Sizes*/
+.head3 {
+    font-size: 32px;
+}
+
+.head4 {
+    font-size: 24px;
+}
+
+.height-x {
+    height: 60px;
+}
+
+.inputSection {
+    width: 1080px;
+    padding-top: 100px;
+}
+
+.part1 {
+    height: 75px;
+    padding: 0px 8px;
+}
+
+/* The Size container */
+.container {
+    padding-left: 51px;
+    margin-bottom: 10px;
+}
+
+.checkmark {
+    height: 32px;
+    width: 32px;
+}
+
+.container .checkmark:after {
+    top: 10px;
+    left: 10px;
+    width: 12px;
+    height: 12px;
+}
+
+/*Pop-Up*/
+.container {
+    top: -8px;
+}
+
+.popup {
+    padding: 8px;
+    top: -64px;
+    /* Adjust the value as needed */
+}
+
+.part2 textarea {
+    height: 840px;
+    padding: 8px;
+}
+
+
+.part2>div:first-child {
+    height: 44px;
+    padding: 8px;
+}
+
+
+.part2>div:last-child {
+    height: 44px;
+    padding: 8px;
+}
+
+/*part-3 code*/
+.part3 {
+    display: flex;
+    justify-content: space-between;
+
+    height: 80px;
+
+    padding: 16px 0px;
+}
+
+.part3 .btn {
+    padding: 8px 24px;
+    border-radius: 38.5px;
+}
+}
