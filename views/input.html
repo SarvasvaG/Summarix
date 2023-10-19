@@ -10,55 +10,73 @@
 
 <body>
     <div class="section1">
-        <div class="inputSection">
-            <div class="part1 height-x">
-                <div class="head3 gray openSans">
-                    Summarizer:
+        <form action="your_processing_script.php" method="post">
+            <div class="inputSection">
+                <div class="part1 height-x">
+                    <div class="head3 gray openSans">
+                        Summarizer:
+                    </div>
+                    <div class="head4 openSans black Sans">
+                        <label class="container">
+                            <input type="radio" checked="checked" name="summary_size" value="Small">
+                            <span class="checkmark"></span>
+                            <div class="popup" id="popup">Small</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="summary_size" value="Medium">
+                            <span class="checkmark"></span>
+                            <div class="popup" id="popup">Medium</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="summary_size" value="Large">
+                            <span class="checkmark"></span>
+                            <div class="popup" id="popup">Large</div>
+                        </label>
+                    </div>
                 </div>
-                <div class="head4 openSans black Sans">
-                    <label class="container">
-                        <input type="radio" checked="checked" name="radio">
-                        <span class="checkmark"></span>
-                        <div class="popup" id="popup">Small</div>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                        <div class="popup" id="popup">Medium</div>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name="radio">
-                        <span class="checkmark"></span>
-                        <div class="popup" id="popup">Large</div>
-                    </label>
+
+                <div class="part2">
+                    <div class="height-x black head3 openSans">
+                        Input:
+                    </div>
+
+                    <textarea id="input_text" name="input_text" placeholder="Paste the text here..." class="head3"></textarea>
+
+                    <div class="height-x head3 black openSans">
+                        0/10,000 words
+                    </div>
+                </div>
+
+                <div class="part3">
+                    <div>
+                        <input type="file" name="documentUpload" id="documentUpload" accept=".txt, .pdf" style="display: none;">
+                        <button type="button" id="customUploadButton" class="btn head3 gray openSans">Upload Document</button>
+                        <span id="fileName" class="head4 gray openSans"></span>
+                    </div>
+                    <div>
+                        <input type="submit" name="submit" value="Summarize" class="btn head3 gray openSans">
+                    </div> 
                 </div>
             </div>
-
-            <div class="part2">
-                <div class=" height-x black head3 openSans">
-                    Input:
-                </div>
-
-                <textarea id="" name="" placeholder="Paste the text here..." class="head3">
-
-            </textarea>
-
-                <div class="height-x head3 black openSans">
-                    0/10,000 words
-                </div>
-            </div>
-
-            <div class="part3">
-                <div>
-                    <input type="submit" name="" value="Document Upload" class="btn head3 gray openSans">
-                </div>
-                <div>
-                    <input type="submit" name="" value="Summarize" class="btn head3 gray openSans">
-                </div>
-
-            </div>
-        </div>
+        </form>
     </div>
 </body>
+
+<script>
+    // Trigger the file input and update the button's text with the selected file name
+    const fileInput = document.getElementById("documentUpload");
+    const customUploadButton = document.getElementById("customUploadButton");
+    const fileName=document.getElementById("fileName");
+
+    fileInput.addEventListener("change", function () {
+        if (fileInput.files.length > 0) {
+            fileName.textContent=" "+fileInput.files[0].name;
+        }
+    });
+
+    customUploadButton.addEventListener("click", function () {
+        fileInput.click();
+    });
+</script>
 
 </html>

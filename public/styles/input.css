@@ -1,31 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Open+Sans:wght@300&display=swap');
 
-/*Colors*/
 :root {
-    --black: #000000;
-    --gray: #FFFFFF;
-    --purple: #B791FC;
+    --black: #333333;
+    --white: #ecf0f1;
 }
 
-.gray {
-    color: #FFFFFF;
+.white {
+    color: #ecf0f1;
 }
 
 .black {
-    color: #000000;
-}
-
-.purple {
-    color: #B791FC;
+    color: #333333;
 }
 
 /*Font-Sizes*/
 .head3 {
-    font-size: 40px;
+    font-size: 32px;
 }
 
 .head4 {
-    font-size: 30px;
+    font-size: 24px;
 }
 
 /*Font-Families*/
@@ -40,7 +34,7 @@
 
 /* Some height and width properties */
 .height-x {
-    height: 75px;
+    height: 60px;
 }
 
 /*Scroll-Bar*/
@@ -61,34 +55,49 @@
     background: #555;
 }
 
-/*Container containing the inital input portion*/
 .inputSection {
-    width: 1440px;
+    width: 1080px;
     margin: auto;
-    padding-top: 125px;
+    padding-top: 100px;
 }
 
-/*The complete page*/
 .section1 {
     height: 100vh;
-    background-color: var(--black);
+    background: linear-gradient(45deg, #3498db, #8e44ad, #2ecc71);
+
+    background-size: 200% 200%;
+    animation: gradientAnimation 30s ease infinite;
 }
 
-/*part-1 code*/
+@keyframes gradientAnimation 
+{
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .part1 {
     display: flex;
     justify-content: space-between;
+    color: var(--white);
 
-    height: 75px;
-    padding: 0px 10px;
+    height: 60px;
+    padding: 0px 8px;
 }
 
-/* The Size container */
 .container {
     display: inline;
     position: relative;
-    padding-left: 63px;
-    margin-bottom: 12px;
+    padding-left: 51px;
+    margin-bottom: 10px;
     cursor: pointer;
 
     -webkit-user-select: none;
@@ -97,7 +106,8 @@
     user-select: none;
 }
 
-.container input {
+.container input 
+{
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -107,18 +117,18 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 40px;
-    width: 40px;
-    background-color: var(--gray);
+    height: 32px;
+    width: 32px;
+    background-color: var(--white);
     border-radius: 50%;
 }
 
 .container:hover input~.checkmark {
-    background-color: var(--gray);
+    background-color: var(--white);
 }
 
 .container input:checked~.checkmark {
-    background-color: var(--purple);
+    background-color: #3498db;
 }
 
 .checkmark:after {
@@ -132,10 +142,10 @@
 }
 
 .container .checkmark:after {
-    top: 12.5px;
-    left: 12.5px;
-    width: 15px;
-    height: 15px;
+    top: 10px;
+    left: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     background: white;
 }
@@ -143,7 +153,7 @@
 /*Pop-Up*/
 .container {
     position: relative;
-    top: -10px;
+    top: -8px;
     display: inline-block;
 }
 
@@ -151,34 +161,31 @@
     display: none;
     position: absolute;
     background-color: #f0f0f0;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    top: -80px;
+    top: -64px;
     left: -30px;
-    /* Adjust the value as needed */
 }
 
 .container:hover .popup {
     display: block;
 }
 
-/*part-2 code*/
 .part2 {
     width: 100%;
-    border: 5px solid var(--purple);
     border-radius: 10px;
 
     box-sizing: border-box;
 }
 
 .part2 textarea {
-    height: 720px;
+    height: 50vh;
     width: 100%;
 
-    background-color: var(--gray);
+    background-color: var(--white);
 
     padding: 10px;
     box-sizing: border-box;
@@ -187,119 +194,23 @@
 }
 
 .part2 div {
-    background-color: var(--gray);
+    background-color: var(--white);
 }
-
-.part2>div:first-child {
-    height: 55px;
-    padding: 10px 10px;
-    border-radius: 5px 5px 0px 0px;
-    border-bottom: 5px solid var(--black);
-}
-
-
-.part2>div:last-child {
-    height: 55px;
-    padding: 10px;
-    border-radius: 0px 0px 5px 5px;
-}
-
-/*part-3 code*/
-.part3 {
-    display: flex;
-    justify-content: space-between;
-
-    height: 100px;
-
-    padding: 20px 0px;
-}
-
-.part3 .btn {
-    padding: 10px 30px;
-    background-color: var(--black);
-    border: 5px solid var(--purple);
-    border-radius: 38.5px;
-    transition: all 0.2s ease-in;
-}
-
-.part3 .btn:hover {
-    background-color: var(--purple);
-    color: var(--black);
-}
-
-
-@media (max-width: 1600px)
-{
-    /*Font-Sizes*/
-.head3 {
-    font-size: 32px;
-}
-
-.head4 {
-    font-size: 24px;
-}
-
-.height-x {
-    height: 60px;
-}
-
-.inputSection {
-    width: 1080px;
-    padding-top: 100px;
-}
-
-.part1 {
-    height: 75px;
-    padding: 0px 8px;
-}
-
-/* The Size container */
-.container {
-    padding-left: 51px;
-    margin-bottom: 10px;
-}
-
-.checkmark {
-    height: 32px;
-    width: 32px;
-}
-
-.container .checkmark:after {
-    top: 10px;
-    left: 10px;
-    width: 12px;
-    height: 12px;
-}
-
-/*Pop-Up*/
-.container {
-    top: -8px;
-}
-
-.popup {
-    padding: 8px;
-    top: -64px;
-    /* Adjust the value as needed */
-}
-
-.part2 textarea {
-    height: 840px;
-    padding: 8px;
-}
-
 
 .part2>div:first-child {
     height: 44px;
     padding: 8px;
+    border-radius: 15px 15px 0px 0px;
+    margin-bottom: 5px;
 }
 
 
 .part2>div:last-child {
     height: 44px;
     padding: 8px;
+    border-radius: 0px 0px 15px 15px;
 }
 
-/*part-3 code*/
 .part3 {
     display: flex;
     justify-content: space-between;
@@ -311,6 +222,393 @@
 
 .part3 .btn {
     padding: 8px 24px;
+    background-color: rgba(52, 152, 219, 0.8);
+    color: #fff;
+    border: 2px solid #3498db;
     border-radius: 38.5px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+
 }
+
+.part3 #fileName {
+    display: inline-block;
+
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    padding: 10px;
+    position: relative;
+    top: 20px;
+}
+
+.part3 .btn:hover {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #fff;
+}
+
+
+@media (max-width: 1600px) {
+    .head3 {
+        font-size: 24px;
+    }
+
+    .head4 {
+        font-size: 18px;
+    }
+
+    .height-x {
+        height: 45px;
+    }
+
+    .inputSection {
+        width: 720px;
+        padding-top: 75px;
+    }
+
+    .part1 {
+        height: 56.25px;
+        padding: 0px 6px;
+    }
+
+    .container {
+        padding-left: 38.25px;
+        margin-bottom: 7.5px;
+    }
+
+    .checkmark {
+        height: 24px;
+        width: 24px;
+    }
+
+    .container .checkmark:after {
+        top: 7.5px;
+        left: 7.5px;
+        width: 8px;
+        height: 8px;
+    }
+
+    .container {
+        top: -6px;
+    }
+
+    .popup {
+        padding: 6px;
+        top: -48px;
+    }
+
+    .part2 textarea {
+        padding: 6px;
+    }
+
+
+    .part2>div:first-child {
+        height: 33px;
+        padding: 6px;
+    }
+
+
+    .part2>div:last-child {
+        height: 33px;
+        padding: 6px;
+    }
+
+    .part3 {
+        display: flex;
+        justify-content: space-between;
+
+        height: 75px;
+
+        padding: 12px 0px;
+    }
+
+    .part3 .btn {
+        padding: 6px 18px;
+        border-radius: 38.5px;
+    }
+
+    .part3 #fileName {
+        max-width: 160px;
+        padding: 6px;
+        top: 13px;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .head3 {
+        font-size: 18px;
+    }
+
+    .head4 {
+        font-size: 13.5px;
+    }
+
+    .height-x {
+        height: 33.75px;
+    }
+
+    .inputSection {
+        width: 360px;
+        padding-top: 56.25px;
+    }
+
+    .part1 {
+        height: 42.19px;
+        padding: 0px 4.5px;
+    }
+
+    .container {
+        padding-left: 28.69px;
+        margin-bottom: 5.63px;
+    }
+
+    .checkmark {
+        height: 18px;
+        width: 18px;
+    }
+
+    .container .checkmark:after {
+        top: 5.63px;
+        left: 5.63px;
+        width: 6px;
+        height: 6px;
+    }
+
+    .container {
+        top: -4.5px;
+    }
+
+    .popup {
+        padding: 4.5px;
+        top: -36px;
+    }
+
+    .part2 textarea {
+        padding: 4.5px;
+    }
+
+
+    .part2>div:first-child {
+        height: 24.75px;
+        padding: 4.5px;
+
+        border-radius: 2px 2px 0px 0px;
+    }
+
+
+    .part2>div:last-child {
+        height: 24.75px;
+        padding: 4.5px;
+
+        border-radius: 0px 0px 2px 2px;
+    }
+
+    .part3 {
+        display: flex;
+        justify-content: space-between;
+
+        height: 56.25px;
+
+        padding: 9px 0px;
+    }
+
+    .part3 .btn {
+        padding: 4.5px 13.5px;
+        border-radius: 28.88px;
+    }
+
+    .part3 #fileName {
+        max-width: 120px;
+        padding: 4.5px;
+        top: 13px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .head3 {
+        font-size: 13.5px;
+    }
+
+    .head4 {
+        font-size: 10.13px;
+    }
+
+    .height-x {
+        height: 25.32px;
+    }
+
+    .inputSection {
+        width: 270px;
+        padding-top: 42.19px;
+    }
+
+    .part1 {
+        height: 31.64px;
+        padding: 0px 3.38px;
+    }
+
+    .container {
+        padding-left: 21.52px;
+        margin-bottom: 4.22px;
+    }
+
+    .checkmark {
+        height: 13.5px;
+        width: 13.5px;
+    }
+
+    .container .checkmark:after {
+        top: 4.22px;
+        left: 4.22px;
+        width: 4.5px;
+        height: 4.5px;
+    }
+
+    .container {
+        top: -3.38px;
+    }
+
+    .popup {
+        padding: 3.38px;
+        top: -27px;
+    }
+
+    .part2 {
+        border-radius: 10px;
+    }
+
+    .part2 textarea {
+        padding: 3.38px;
+    }
+
+
+    .part2>div:first-child {
+        height: 18.56px;
+        padding: 3.38px;
+
+        border-radius: 2px 2px 0px 0px;
+    }
+
+
+    .part2>div:last-child {
+        height: 18.56px;
+        padding: 3.38px;
+
+        border-radius: 0px 0px 2px 2px;
+    }
+
+    .part3 {
+        display: flex;
+        justify-content: space-between;
+
+        height: 42.19px;
+
+        padding: 6.75px 0px;
+    }
+
+    .part3 .btn {
+        padding: 3.38px 10.13px;
+        border-radius: 21.66px;
+    }
+
+    .part3 #fileName {
+        max-width: 80px;
+        padding: 3.38px;
+        top: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+    .head3 {
+        font-size: 10px
+    }
+
+    .head4 {
+        font-size: 8px;
+    }
+
+    .height-x {
+        height: 19px;
+    }
+
+    .inputSection {
+        width: 200px;
+        padding-top: 32px;
+    }
+
+    .part1 {
+        height: 24px;
+        padding: 0px 3px;
+    }
+
+    .container {
+        padding-left: 16px;
+        margin-bottom: 3.5px;
+    }
+
+    .checkmark {
+        height: 10px;
+        width: 10px;
+    }
+
+    .container .checkmark:after {
+        top: 3.17px;
+        left: 3.17px;
+        width: 3.34px;
+        height: 3.34px;
+    }
+
+    /*Pop-Up*/
+    .container {
+        top: -3px;
+    }
+
+    .popup {
+        padding: 3px;
+        top: -19.5px;
+    }
+
+    .part2 {
+        border-radius: 7.5px;
+    }
+
+    .part2 textarea {
+        padding: 3px;
+    }
+
+
+    .part2>div:first-child {
+        height: 14.5px;
+        padding: 3px;
+
+        border-radius: 1.5px 1.5px 0px 0px;
+    }
+
+
+    .part2>div:last-child {
+        height: 14.5px;
+        padding: 3px;
+
+        border-radius: 0px 0px 1.5px 1.5px;
+    }
+
+    .part3 {
+        height: 32px;
+        padding: 5px 0px;
+    }
+
+    .part3 .btn {
+        padding: 3px 7.5px;
+        border-radius: 16px;
+    }
+
+    .part3 #fileName {
+        max-width: 64px;
+        padding: 3px;
+        top: 10px;
+    }
 }
