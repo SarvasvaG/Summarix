@@ -10,9 +10,17 @@ def index():
 def input():
     if request.method == 'POST':
         s = request.form['inputText']
-        # f = request.files['documentUpload']
-        summary = summariser.funSum(s)
-        return render_template('output.html',st = summary)
+        f = request.files['documentUpload']
+        summary = ""
+        
+        if(s):
+            summary += summariser.funSum(s)
+            return render_template('output.html',out = summary, inp = s)
+
+        if(f):
+            text = f.read().decode('utf-8')
+            summary += summariser.funSum(text)
+            return render_template('output.html',out = summary, inp = text)
     return render_template('input.html')
 
 @app.route('/contact')
