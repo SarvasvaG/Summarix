@@ -9,17 +9,18 @@ def index():
 @app.route('/input',methods = ['GET','POST'])
 def input():
     if request.method == 'POST':
+        size = request.form['summarySize']
         s = request.form['inputText']
         f = request.files['documentUpload']
         summary = ""
         
         if(s):
-            summary += summariser.funSum(s)
+            summary += summariser.funSum(s,size)
             return render_template('output.html',out = summary, inp = s)
 
         if(f):
             text = f.read().decode('utf-8')
-            summary += summariser.funSum(text)
+            summary += summariser.funSum(text,size)
             return render_template('output.html',out = summary, inp = text)
     return render_template('input.html')
 

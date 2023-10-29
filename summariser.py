@@ -5,7 +5,7 @@ nltk.download('stopwords')
 nltk.download('punkt')
 from nltk.corpus import stopwords 
 
-def funSum(text):
+def funSum(text,size):
     stopWords = set(stopwords.words("english")) 
     words = word_tokenize(text) 
 
