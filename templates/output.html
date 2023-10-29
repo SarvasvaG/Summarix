@@ -1,12 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Summary</title>
+    <link rel="stylesheet" href="../static/styles/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../static/images/logo.png">
+
 </head>
+
 <body>
-    <p>{{st}}</p>
-    <!-- <p>{{file}}</p> -->
+
+    <section class="header">
+        <div class="bgImg"></div>
+        <div class="navBar">
+            <nav>
+                <a href="index.html"><img src="../static/images/logo.png" alt="logo"></a>
+                <div class="navLinks">
+
+                    <i class="fa fa-times"></i>
+
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/input">SUMMARIZER</a></li>
+                        <li><a href="./index.html#features">FEATURES</a></li>
+                        <li><a href="/about">ABOUT US</a></li>
+                    </ul>
+                </div>
+                <i class="fa fa-bars"></i>
+            </nav>
+        </div>
+    </section>
+
+    <div class="section1">
+        <form action="/input" method="post" enctype="multipart/form-data">
+            <div class="inputSection">
+                <div class="part1 height-x">
+                    <div class="head3 gray openSans">
+                        Summarizer:
+                    </div>
+                    <div class="head4 openSans black Sans">
+                        <label class="container">
+                            <input type="radio" checked="checked" name="summarySize" value="Small">
+                            <span class="checkmark"></span>
+                            <div class="popup">Small</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="summarySize" value="Medium">
+                            <span class="checkmark"></span>
+                            <div class="popup">Medium</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="summarySize" value="Large">
+                            <span class="checkmark"></span>
+                            <div class="popup">Large</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="inputOutput">
+                    <div class="part2 input">
+                        <div class="height-x black head3 openSans">
+                            Input
+                        </div>
+
+                        <textarea id="textArea" name="inputText" placeholder="Paste the text here..."
+                            class="head3 openSans">{{inp}}</textarea>
+
+                        <div class="height-x head3 black openSans" id="wordCount1">
+                            0/10000 words
+                        </div>
+                    </div>
+
+                    <div class="part2 output">
+                        <div class="height-x black head3 openSans">
+                            Output
+                            <button type="button" id="copyToClipboard"><i class="fa fa-clone"></i></button>
+                        </div>
+
+                        <div class="outputBox head3 openSans">{{out}}</div>
+
+                        <div class="height-x head3 black openSans" id="wordCount2">
+                            0/10000 words
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part3">
+                    <div>
+                        <input type="file" name="documentUpload" id="documentUpload" accept=".txt, .pdf"
+                            style="display: none;">
+                        <button type="button" id="customUploadButton" class="btn head3 gray openSans">Upload
+                            Document</button>
+                        <span id="fileName" class="head4 gray openSans"></span>
+                    </div>
+                    <div>
+                        <input type="submit" name="submit" value="Summarize" class="btn head3 gray openSans">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <section class="footer">
+
+        <p>Transforming Information Overload into Clarity: Elevate Your Understanding with Summarix.</p>
+
+        <a href=""><i class="fa fa-facebook"></i></a>
+        <a href=""><i class="fa fa-whatsapp"></i></a>
+        <a href=""><i class="fa fa-instagram"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+
+        <p><i class="fa fa-copyright"></i> Summarix, 2023. All Rights Reserved.</p>
+
+    </section>
 </body>
+
+<script>
+    const fileInput = document.getElementById("documentUpload");
+    const customUploadButton = document.getElementById("customUploadButton");
+    const fileName = document.getElementById("fileName");
+
+    fileInput.addEventListener("change", function () {
+        if (fileInput.files.length > 0) {
+            fileName.textContent = " " + fileInput.files[0].name;
+        }
+    });
+
+    customUploadButton.addEventListener("click", function () {
+        fileInput.click();
+    });
+
+    const textArea = document.getElementById('textArea');
+    const wordCount1 = document.getElementById('wordCount1');
+    if (textArea) {
+            const text = textArea.value;
+            const words = text.split(/\s+/).filter(word => word.length > 0);
+            wordCount1.textContent = words.length + "/10000 words";
+    }
+    textArea.addEventListener('input', function () {
+        if (textArea) {
+            const text = textArea.value;
+            const words = text.split(/\s+/).filter(word => word.length > 0);
+            wordCount1.textContent = words.length + "/10000 words";
+        }
+    });
+
+    const wordCount2 = document.getElementById('wordCount2');
+    const outputText = document.getElementsByClassName("outputBox")[0].textContent;
+    const words = outputText.split(/\s+/).filter(word => word.length > 0);
+    console.log(words);
+    wordCount2.textContent = words.length + "/10000 words";
+
+    const btn = document.getElementById("copyToClipboard");
+    btn.addEventListener("click",()=>{
+        console.log("clicked");
+        btn.style.fontSize="15px";
+        btn.style.opacity="0.8";
+        setTimeout(()=>{
+            btn.style.fontSize="17.5px";
+            btn.style.opacity="1";
+        }, 50);
+        const cb = navigator.clipboard;
+        cb.writeText(outputText);
+    });
+
+    const barsIcon = document.querySelector(".fa-bars");
+    const timesIcon = document.querySelector(".fa-times");
+    const navLinks = document.querySelector(".navLinks");
+
+    barsIcon.addEventListener("click", function () {
+        navLinks.classList.add("show");
+        barsIcon.style.display = "none";
+        timesIcon.style.display = "block";
+    });
+
+    timesIcon.addEventListener("click", function () {
+        navLinks.classList.remove("show");
+        timesIcon.style.display = "none";
+        barsIcon.style.display = "block";
+    });
+</script>
+
 </html>

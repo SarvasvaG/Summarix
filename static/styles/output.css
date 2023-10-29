@@ -31,23 +31,22 @@
     font-family: 'Roboto', sans-serif;
 }
 
-
 /*Scroll-Bar*/
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #00000000;
+    background: #f1f1f100;
 }
 
 ::-webkit-scrollbar-thumb {
     background: #888888;
-    border-radius: 2.5px;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555555;
+    background: #555;
 }
 
 .section1 {
@@ -72,7 +71,6 @@
     }
 }
 
-/*Part 1 code*/
 .part1 {
     display: flex;
     justify-content: space-between;
@@ -82,7 +80,6 @@
     padding: 0px 5px;
 }
 
-/*Size buttons code*/
 .container {
     display: inline;
     position: relative;
@@ -162,9 +159,8 @@
     display: block;
 }
 
-/*Part2 Code*/
 .part2 {
-    width: 100%;
+    width: 50%;
     border-radius: 10px;
 
     box-sizing: border-box;
@@ -183,7 +179,8 @@
     z-index: 0;
 }
 
-.part2 textarea {
+.part2 textarea,
+.part2 .outputBox {
     height: 50vh;
     width: 100%;
 
@@ -193,15 +190,20 @@
     box-sizing: border-box;
     border: none;
     outline: none;
+}
 
-    overflow-x: hidden;
+.part2 .outputBox {
+    margin-bottom: 4px;
+    overflow-y: scroll;
+    color: #000000;
 }
 
 .part2 div {
     background-color: var(--white);
 }
 
-.part2>div:first-child, .part2>div:last-child {
+.part2>div:first-child,
+.part2>div:last-child {
     height: 30px;
     padding: 5px;
     border-radius: 15px 15px 0px 0px;
@@ -209,12 +211,49 @@
 }
 
 
-.part2>div:last-child
-{
+.part2>div:last-child {
     border-radius: 0px 0px 15px 15px;
     margin-bottom: 0;
 }
 
+.inputOutput {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input>div:first-child,
+.input>div:last-child {
+    border-radius: 15px 0px 0px 0px;
+    margin-bottom: 5px;
+}
+
+.input>div:last-child {
+    border-radius: 0px 0px 0px 15px;
+    margin-bottom: 0;
+}
+
+.output>div:first-child,
+.output>div:last-child {
+    height: 30px;
+    padding: 5px;
+    border-radius: 0px 15px 0px 0px;
+    margin-bottom: 5px;
+}
+
+.output>div:last-child {
+    border-radius: 0px 0px 15px 0px;
+    margin-bottom: 0;
+}
+
+
+#copyToClipboard
+{
+    border: none;
+    outline: none;
+
+    font-size: 17.5px;
+    padding: 0px 4px;
+}
 .part3 {
     display: flex;
     justify-content: space-between;
@@ -234,7 +273,7 @@
     font-family: 'Roboto', sans-serif;
 
     padding: 10px 20px;
-    background-color: #0000ee;
+    background-color: #0000EE;
     border-radius: 30px;
     border: 1px solid #000000;
 
@@ -270,6 +309,10 @@
 
     .inputSection {
         width: 80%;
+        position: static;
+        transform: initial;
+        padding-top: 100px;
+        margin: auto;
     }
 
     .part1 {
@@ -303,8 +346,15 @@
         top: -30px;
     }
 
+    .inputOutput
+    {
+        flex-direction: column;
+    }
+
     .part2 {
         border-radius: 20px;
+        margin-bottom: 10px;
+        width: 100%;
     }
 
     .part2 textarea {

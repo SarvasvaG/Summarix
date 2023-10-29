@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,redirect
+from flask import Flask,render_template,request,redirect,url_for
 import summariser
 app = Flask(__name__)
 
@@ -22,11 +22,13 @@ def input():
             text = f.read().decode('utf-8')
             summary += summariser.funSum(text,size)
             return render_template('output.html',out = summary, inp = text)
+                
     return render_template('input.html')
 
-@app.route('/contact')
-def contact():
-    return render_template('contact.html')
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True,port=8080)

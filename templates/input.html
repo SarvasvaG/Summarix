@@ -6,9 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summarizer</title>
     <link rel="stylesheet" href="../static/styles/input.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../static/images/logo.png">
 </head>
 
 <body>
+    
+    <section class="header">
+        <div class="bgImg"></div>
+        <div class="navBar">
+            <nav>
+                <a href="index.html"><img src="../static/images/logo.png" alt="logo"></a>
+                <div class="navLinks">
+
+                    <i class="fa fa-times"></i>
+
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/input">SUMMARIZER</a></li>
+                        <li><a href="./index.html#features">FEATURES</a></li>
+                        <li><a href="/about">ABOUT US</a></li>
+                    </ul>
+                </div>
+                <i class="fa fa-bars"></i>
+            </nav>
+        </div>
+    </section>
+
     <div class="section1">
         <form action="/input" method="post" enctype = "multipart/form-data">
             <div class="inputSection">
@@ -63,9 +87,38 @@
             </div>
         </form>
     </div>
+
+    <section class="footer">
+
+        <p>Transforming Information Overload into Clarity: Elevate Your Understanding with Summarix.</p>
+
+        <a href=""><i class="fa fa-facebook"></i></a>
+        <a href=""><i class="fa fa-whatsapp"></i></a>
+        <a href=""><i class="fa fa-instagram"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+
+        <p><i class="fa fa-copyright"></i> Summarix, 2023. All Rights Reserved.</p>
+
+    </section>
 </body>
 
 <script>
+    const barsIcon = document.querySelector(".fa-bars");
+    const timesIcon = document.querySelector(".fa-times");
+    const navLinks = document.querySelector(".navLinks");
+
+    barsIcon.addEventListener("click", function () {
+        navLinks.classList.add("show");
+        barsIcon.style.display = "none";
+        timesIcon.style.display = "block";
+    });
+
+    timesIcon.addEventListener("click", function () {
+        navLinks.classList.remove("show");
+        timesIcon.style.display = "none";
+        barsIcon.style.display = "block";
+    });
+    
     // Trigger the file input and update the button's text with the selected file name
     const fileInput = document.getElementById("documentUpload");
     const customUploadButton = document.getElementById("customUploadButton");
@@ -83,9 +136,12 @@
 
     const textArea = document.getElementById('textArea');
     const wordCount = document.getElementById('wordCount');
-
+    if(textArea){
+        const text = textArea.value;
+        const words = text.split(/\s+/).filter(word => word.length > 0);
+        wordCount.textContent = words.length + "/10000 words";
+    }
     textArea.addEventListener('input', function () {
-        console.log("5");
         if(textArea){
         const text = textArea.value;
         const words = text.split(/\s+/).filter(word => word.length > 0);
