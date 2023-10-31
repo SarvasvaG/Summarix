@@ -183,13 +183,13 @@
 .part2 .outputBox {
     height: 50vh;
     width: 100%;
-
     background-color: var(--white);
 
     padding: 6.25px;
     box-sizing: border-box;
     border: none;
     outline: none;
+    word-break: break-all;
 }
 
 .part2 .outputBox {

@@ -49,7 +49,7 @@ nav img {
     color: #FFFFFF;
     text-decoration: none;
     letter-spacing: 0.3px;
-
+    cursor: pointer;
     font-size: 12px;
     font-weight: 500;
     font-family: 'Roboto', sans-serif;

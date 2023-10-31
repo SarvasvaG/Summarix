@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="../static/styles/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../static/images/logo.png">
+</head>
+
+<body>
+    <section class="header">
+        <div class="bgImg"></div>
+        <div class="navBar">
+            <nav>
+                <a href="index.html"><img src="../static/images/logo.png" alt="logo"></a>
+                <div class="navLinks">
+
+                    <i class="fa fa-times"></i>
+
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/input">SUMMARIZER</a></li>
+                        <li><a href="/#features">FEATURES</a></li>
+                        <li><a href="/#contact">CONTACT US</a></li>
+                        <li><a href="/about">ABOUT US</a></li>
+                    </ul>
+                </div>
+                <i class="fa fa-bars"></i>
+            </nav>
+        </div>
+
+        <div class="textBox">
+            <h1>Our Mission</h1>
+            <p>
+                At Summarix, our mission is to transform how individuals and organizations engage with information. We
+                strive to simplify the often-complex landscape of data and documents, making it accessible,
+                comprehensible, and tailored to individual preferences. Through innovative AI technology, we empower
+                users to make well-informed decisions, save valuable time, and navigate the digital world of information
+                effortlessly. Join us on our journey as we continuously push the boundaries of innovation, reshaping the
+                future of information access and customization.
+            </p>
+        </div>
+    </section>
+
+    <section class="teamSection">
+        <h1>The Team</h1>
+        <p>Our Progress Begins with Our Team - Get Acquainted with the contributors.</p>
+
+        <div class="members">
+            <button class="btn" id="prev">&lt;</button>
+            <div class="member">
+                <img src="../static/images/logo.png" alt="">
+                <h3>Sarvasva Gupta</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
+            </div>
+
+            <div class="member">
+                <img src="../static/images/logo.png" alt="">
+                <h3>Anvit Gupta</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
+            </div>
+
+            <div class="member">
+                <img src="../static/images/logo.png" alt="">
+                <h3>Vineet Kumar</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
+            </div>
+
+            <div class="member">
+                <img src="../static/images/logo.png" alt="">
+                <h3>Utkarsh Lohiya</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
+            </div>
+
+            <div class="member">
+                <img src="../static/images/logo.png" alt="">
+                <h3>Krishna Aggarwal</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
+            </div>
+            <button class="btn" id="next">&gt;</button>
+        </div>
+    </section>
+
+    <section class="footer">
+
+        <p>Transforming Information Overload into Clarity: Elevate Your Understanding with Summarix.</p>
+
+        <a href=""><i class="fa fa-facebook"></i></a>
+        <a href=""><i class="fa fa-whatsapp"></i></a>
+        <a href=""><i class="fa fa-instagram"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+
+        <p><i class="fa fa-copyright"></i> Summarix, 2023. All Rights Reserved.</p>
+
+    </section>
+</body>
+
+<script>
+    var members = document.getElementsByClassName("member");
+    var index = 0;
+    var len = members.length;
+
+    function showMember() {
+        for (var i = 0; i < len; i++)
+            members[i].classList.add("hide");
+
+        members[index % 5].classList.remove("hide");
+        index++;
+
+        console.log(index);
+    };
+
+    function startInterval() {
+        x = setInterval(showMember, 3000);
+    }
+
+    function showPrevMember() {
+        index = (index - 2);
+        if (index < 0)
+            index = 4;
+        index = index;
+        clearInterval(x);
+        showMember();
+        startInterval();
+    }
+
+    function showNextMember() {
+        clearInterval(x);
+        showMember();
+        startInterval();
+    }
+    showMember();
+    startInterval();
+
+    for (var i = 0; i < len; i++) {
+        members[i].addEventListener("mouseover", () => {
+            clearInterval(x); // Clear the interval when the mouse is over
+        });
+
+        members[i].addEventListener("mouseout", () => {
+            startInterval(); // Restart the interval when the mouse moves out
+        });
+    }
+
+    var prevBtn = document.getElementById("prev");
+    var nextBtn = document.getElementById("next");
+
+    prevBtn.addEventListener("click", showPrevMember);
+    nextBtn.addEventListener("click", showNextMember);
+
+    const barsIcon = document.querySelector(".fa-bars");
+    const timesIcon = document.querySelector(".fa-times");
+    const navLinks = document.querySelector(".navLinks");
+
+    barsIcon.addEventListener("click", function () {
+        navLinks.classList.add("show");
+        barsIcon.style.display = "none";
+        timesIcon.style.display = "block";
+    });
+
+    timesIcon.addEventListener("click", function () {
+        navLinks.classList.remove("show");
+        timesIcon.style.display = "none";
+        barsIcon.style.display = "block";
+    });
+
+</script>
+
+</html>

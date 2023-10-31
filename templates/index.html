@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summarix - The Summarizer</title>
+    <link href="../static/styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="../static/images/logo.png">
+</head>
+
+<body>
+
+    <section class="header">
+        <div class="bgImg"></div>
+        <div class="navBar">
+            <nav>
+                <a href="index.html"><img src="../static/images/logo.png" alt="logo"></a>
+                <div class="navLinks">
+
+                    <i class="fa fa-times"></i>
+
+                    <ul>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="/input">SUMMARIZER</a></li>
+                        <li><a href="/#features">FEATURES</a></li>
+                        <li><a href="/#contact">CONTACT US</a></li>
+                        <li><a href="/about">ABOUT US</a></li>
+                    </ul>
+                </div>
+                <i class="fa fa-bars"></i>
+            </nav>
+        </div>
+
+        <div class="textBox">
+            <h1>Summarix - The Summarizer</h1>
+            <p>
+                Welcome to the world of AI summaries, where information efficiency meets simplicity. Join us in
+                transforming the way you access and utilize knowledge.
+            </p>
+            <a href="/input">GET STARTED</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h1>Why choose Summarix?</h1>
+        <div class="featureContainer">
+            <div class="feature">
+                <img src="../static/images/pdfDocx.jpg">
+                <div>
+                    <h3>Unlocking Versatility: Seamlessly Input Text, PDFs, and DOCX Files.</h3>
+                    <p>Our AI Document Summarizer allows you to add content in various ways. It's your call! This
+                        flexibility ensures a hassle-free experience, no matter how you choose to bring your content
+                        into our platform.
+                    </p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <img src="../static/images/size.webp">
+                <div>
+                    <h3>Summaries, Sized to Suit: Short, Medium, or Large - Your Pick!</h3>
+                    <p>Our AI Document Summarizer offers options for quick and concise, balanced and medium-sized, or
+                        in-depth and large summaries to ensure you get summaries that match your taste.
+                    </p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <img src="../static/images/wordCount.jpg">
+                <div>
+                    <h3>Word Count Monitoring.</h3>
+                    <p>Our AI Document Summarizer offers precise word count tracking for input and output content,
+                        enabling you to maintain a level of formality, precision, and professional touch in your
+                        summaries.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contactForm" id="contact">
+        <div class="contactBox">
+            <h1>Contact Us</h1>
+            <p>For any questions, assistance, or partnership opportunities, please don't hesitate to get in touch with
+                us.
+                We're here to help and collaborate to make your document summarization experience the best it can be.
+            </p>
+
+            <form action="" method="">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+
+                <a href="/input">SUBMIT</a>
+        </div>
+        </form>
+    </section>
+
+    <section class="footer">
+
+        <p>Transforming Information Overload into Clarity: Elevate Your Understanding with Summarix.</p>
+
+        <a href=""><i class="fa fa-facebook"></i></a>
+        <a href=""><i class="fa fa-whatsapp"></i></a>
+        <a href=""><i class="fa fa-instagram"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+
+        <p><i class="fa fa-copyright"></i> Summarix, 2023. All Rights Reserved.</p>
+
+    </section>
+</body>
+
+<script>
+    const barsIcon = document.querySelector(".fa-bars");
+    const timesIcon = document.querySelector(".fa-times");
+    const navLinks = document.querySelector(".navLinks");
+
+    barsIcon.addEventListener("click", function () {
+        navLinks.classList.add("show");
+        barsIcon.style.display = "none";
+        timesIcon.style.display = "block";
+    });
+
+    timesIcon.addEventListener("click", function () {
+        navLinks.classList.remove("show");
+        timesIcon.style.display = "none";
+        barsIcon.style.display = "block";
+    });
+
+    function isElementInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        const featureHeight = element.offsetHeight;
+        return (
+            (rect.top + featureHeight * 0.2) <= windowHeight &&
+            (rect.bottom - featureHeight * 0.2) >= 0
+        );
+    }
+
+    function handleScroll() {
+        const features = document.querySelectorAll('.feature');
+
+        features.forEach((feature) => {
+            if (isElementInViewport(feature)) {
+                feature.classList.add('active');
+            }
+        });
+
+        const contactSection = document.querySelector('.contactBox');
+        if (isElementInViewport(contactSection)) {
+            contactSection.classList.add('active');
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('load', handleScroll);
+
+</script>
+
+</html>

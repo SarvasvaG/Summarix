@@ -25,7 +25,8 @@
                     <ul>
                         <li><a href="/">HOME</a></li>
                         <li><a href="/input">SUMMARIZER</a></li>
-                        <li><a href="./index.html#features">FEATURES</a></li>
+                        <li><a href="/#features">FEATURES</a></li>
+                        <li><a href="/#contact">CONTACT US</a></li>
                         <li><a href="/about">ABOUT US</a></li>
                     </ul>
                 </div>
@@ -42,21 +43,57 @@
                         Summarizer:
                     </div>
                     <div class="head4 openSans black Sans">
-                        <label class="container">
-                            <input type="radio" checked="checked" name="summarySize" value="Small">
-                            <span class="checkmark"></span>
-                            <div class="popup">Small</div>
-                        </label>
-                        <label class="container">
-                            <input type="radio" name="summarySize" value="Medium">
-                            <span class="checkmark"></span>
-                            <div class="popup">Medium</div>
-                        </label>
-                        <label class="container">
-                            <input type="radio" name="summarySize" value="Large">
-                            <span class="checkmark"></span>
-                            <div class="popup">Large</div>
-                        </label>
+                        {% if size == "Small" %}
+                            <label class="container">
+                                <input type="radio" checked="checked" name="summarySize" value="Small">
+                                <span class="checkmark"></span>
+                                <div class="popup">Small</div>
+                            </label>
+                            <label class="container">
+                                <input type="radio" name="summarySize" value="Medium">
+                                <span class="checkmark"></span>
+                                <div class="popup">Medium</div>
+                            </label>
+                            <label class="container">
+                                <input type="radio" name="summarySize" value="Large">
+                                <span class="checkmark"></span>
+                                <div class="popup">Large</div>
+                            </label>
+                        {% endif %}
+                        {% if size == "Medium" %}
+                            <label class="container">
+                                <input type="radio"  name="summarySize" value="Small">
+                                <span class="checkmark"></span>
+                                <div class="popup">Small</div>
+                            </label>
+                            <label class="container">
+                                <input type="radio" checked="checked" name="summarySize" value="Medium">
+                                <span class="checkmark"></span>
+                                <div class="popup">Medium</div>
+                            </label>
+                            <label class="container">
+                                <input type="radio" name="summarySize" value="Large">
+                                <span class="checkmark"></span>
+                                <div class="popup">Large</div>
+                            </label>
+                        {% endif %}
+                        {% if size == "Large" %}
+                            <label class="container">
+                                <input type="radio"  name="summarySize" value="Small">
+                                <span class="checkmark"></span>
+                                <div class="popup">Small</div>
+                            </label>
+                            <label class="container">
+                                <input type="radio" name="summarySize" value="Medium">
+                                <span class="checkmark"></span>
+                                <div class="popup">Medium</div>
+                            </label>
+                            <label class="container">
+                                <input type="radio" checked="checked" name="summarySize" value="Large">
+                                <span class="checkmark"></span>
+                                <div class="popup">Large</div>
+                            </label>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -90,7 +127,7 @@
 
                 <div class="part3">
                     <div>
-                        <input type="file" name="documentUpload" id="documentUpload" accept=".txt, .pdf"
+                        <input type="file" name="documentUpload" id="documentUpload" accept=".txt, .pdf,.docx"
                             style="display: none;">
                         <button type="button" id="customUploadButton" class="btn head3 gray openSans">Upload
                             Document</button>
