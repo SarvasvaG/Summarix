@@ -190,6 +190,8 @@
     border: none;
     outline: none;
     word-break: break-all;
+    white-space: pre-wrap;
+    
 }
 
 .part2 .outputBox {

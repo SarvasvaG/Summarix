@@ -1,13 +1,44 @@
 from flask import Flask,render_template,request
-import summariser
 import io
 import PyPDF2
 from docx import Document
+from flask_sqlalchemy import SQLAlchemy
+import datetime
+
+import abstractive
+import extractive
+
+from transformers import pipeline, set_seed
+
+model_ckpt = "google/flan-t5-base"
+pipe = pipeline('summarization', model=model_ckpt)
+
 
 app = Flask(__name__)
 
-@app.route('/')
+db = SQLAlchemy()
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///DocSummary.db"
+db.init_app(app)
+
+
+class Inst(db.Model):
+    name = db.Column(db.String, primary_key=True)
+    email = db.Column(db.String,nullable = False)
+    message = db.Column(db.String,nullable = False)
+    time_created = db.Column(db.DateTime, default=datetime.datetime.now())
+
+
+@app.route('/',methods = ['GET','POST'])
 def index():
+    with app.app_context():
+        db.create_all()
+    if(request.method == 'POST'):
+        name = request.form['name']
+        message = request.form['message']
+        email = request.form['email']
+        inst_first = Inst(name= name,message = message,email = email)
+        db.session.add(inst_first)
+        db.session.commit()
     return render_template('index.html')
 
 @app.route('/input',methods = ['GET','POST'])
@@ -32,22 +63,20 @@ def input():
             else:
                 text = extract_text_from_txt(uploaded_file_contents)
             
-            summary += summariser.funSum(text,size)
+            summary += extractive.summarize(text,size,"BullPt")
             return render_template('output.html',out = summary, inp = text,size = size)
 
         if(s):
-            summary += summariser.funSum(s,size)
+            summary += extractive.summarize(s,size,"BullPt")
             return render_template('output.html',out = summary, inp = s,size = size)
-
+        
         summary = ""
         f = None
-
     return render_template('input.html')
 
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 def extract_text_from_pdf(pdf_content):
     text = ""
@@ -70,4 +99,4 @@ def extract_text_from_txt(txt_content):
 
 
 if __name__ == "__main__":
-    app.run(debug=True,port=8080)
+    app.run(debug=True,port=8000)

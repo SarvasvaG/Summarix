@@ -345,9 +345,9 @@
     box-shadow: 0 0 8px 0 #FFFFFF;
 }
 
-.contactBox a {
-    display: inline-block;
-
+.contactBox .submitContact {
+    width: initial;
+    
     text-decoration: none;
     color: #FFFFFF;
     letter-spacing: 0.5px;
@@ -363,7 +363,7 @@
     margin: 15px 0px;
 }
 
-.contactBox a:hover {
+.contactBox .submitContact:hover {
     background-color: #0000EE7F;
     border: 1px solid #FFFFFF;
 }
@@ -391,7 +391,7 @@
         padding: 6px;
     }
 
-    .contactBox a{
+    .contactBox .submitContact{
         margin-top: 10px;
     }
 
