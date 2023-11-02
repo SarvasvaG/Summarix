@@ -1,0 +1,71 @@
+/*Styling Classes*/
+:root {
+    --black: #333333;
+    --white: #ecf0f1;
+}
+
+.white {
+    color: #ecf0f1;
+}
+
+.black {
+    color: #333333;
+}
+
+.head3 {
+    font-size: 20px;
+}
+
+.head4 {
+    font-size: 15px;
+}
+
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.openSans {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/*Scroll-Bar*/
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888888;
+    border-radius: 2.5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555555;
+}
+
+/*Pop-Up*/
+.container {
+    position: relative;
+    top: -8px;
+    display: inline-block;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    z-index: 1;
+    top: -30px;
+    left: -10px;
+}
+
+.container:hover .popup {
+    display: block;
+}

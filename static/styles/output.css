@@ -1,53 +1,6 @@
 @import url('./partials/nav.css');
+@import url('./partials/utility.css');
 @import url('./partials/footer.css');
-
-/*Styling Classes*/
-:root {
-    --black: #333333;
-    --white: #ecf0f1;
-}
-
-.white {
-    color: #ecf0f1;
-}
-
-.black {
-    color: #333333;
-}
-
-.head3 {
-    font-size: 20px;
-}
-
-.head4 {
-    font-size: 15px;
-}
-
-.montserrat {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.openSans {
-    font-family: 'Roboto', sans-serif;
-}
-
-/*Scroll-Bar*/
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f100;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #888888;
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
 
 .section1 {
     min-height: 100vh;
@@ -136,29 +89,6 @@
     background: white;
 }
 
-/*Pop-Up*/
-.container {
-    position: relative;
-    top: -8px;
-    display: inline-block;
-}
-
-.popup {
-    display: none;
-    position: absolute;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    padding: 2px;
-    z-index: 1;
-    top: -30px;
-    left: -10px;
-}
-
-.container:hover .popup {
-    display: block;
-}
-
 .part2 {
     width: 50%;
     border-radius: 10px;
@@ -185,13 +115,14 @@
     width: 100%;
     background-color: var(--white);
 
-    padding: 6.25px;
+    padding: 10px;
     box-sizing: border-box;
     border: none;
     outline: none;
-    word-break: break-all;
-    white-space: pre-wrap;
-    
+
+    overflow-x: hidden;
+    white-space: pre-line;
+    overflow-wrap: break-word;
 }
 
 .part2 .outputBox {
@@ -359,8 +290,9 @@
         width: 100%;
     }
 
-    .part2 textarea {
-        padding: 4.5px;
+    .part2 textarea,
+    .part2 .outputBox {
+        padding: 6.25px;
     }
 
     .part2>div:first-child {
