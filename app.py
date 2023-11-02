@@ -5,14 +5,17 @@ from docx import Document
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 
-import abstractive
 import extractive
+import Email
+# from transformers import pipeline,AutoModelForSeq2SeqLM
+# model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
 
-from transformers import pipeline, set_seed
+# model_ckpt = "google/flan-t5-base"
+# pipe = pipeline('summarization', model=model_ckpt)
 
-model_ckpt = "google/flan-t5-base"
-pipe = pipeline('summarization', model=model_ckpt)
 
+# import model
+# import testm
 
 app = Flask(__name__)
 
@@ -39,6 +42,8 @@ def index():
         inst_first = Inst(name= name,message = message,email = email)
         db.session.add(inst_first)
         db.session.commit()
+
+        Email.transfer(email)
     return render_template('index.html')
 
 @app.route('/input',methods = ['GET','POST'])
@@ -63,11 +68,13 @@ def input():
             else:
                 text = extract_text_from_txt(uploaded_file_contents)
             
-            summary += extractive.summarize(text,size,"BullPt")
+            summary += extractive.summarize(text,size,"para")
+            print(summary)
             return render_template('output.html',out = summary, inp = text,size = size)
 
         if(s):
-            summary += extractive.summarize(s,size,"BullPt")
+            summary += extractive.summarize(s,size,"para")
+            print(summary)
             return render_template('output.html',out = summary, inp = s,size = size)
         
         summary = ""
