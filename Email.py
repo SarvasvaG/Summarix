@@ -4,7 +4,7 @@ import secretsEmail
 smtp_server = "smtp.gmail.com"
 port = 587  
 
-sender_email = "sarvasva_g@cs.iitr.ac.in"
+sender_email = secretsEmail.email
 password = secretsEmail.password
 
 context = ssl.create_default_context()

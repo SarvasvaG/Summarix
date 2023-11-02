@@ -23,23 +23,26 @@ db = SQLAlchemy()
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///DocSummary.db"
 db.init_app(app)
 
+loop = 0
 
 class Inst(db.Model):
-    name = db.Column(db.String, primary_key=True)
+    sno = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String)
     email = db.Column(db.String,nullable = False)
     message = db.Column(db.String,nullable = False)
     time_created = db.Column(db.DateTime, default=datetime.datetime.now())
-
 
 @app.route('/',methods = ['GET','POST'])
 def index():
     with app.app_context():
         db.create_all()
     if(request.method == 'POST'):
+        global loop
+        loop  = loop + 1
         name = request.form['name']
         message = request.form['message']
         email = request.form['email']
-        inst_first = Inst(name= name,message = message,email = email)
+        inst_first = Inst(sno = loop,name= name,message = message,email = email)
         db.session.add(inst_first)
         db.session.commit()
 
