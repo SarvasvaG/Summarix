@@ -60,7 +60,6 @@ def input():
         if(not s and not f):
             return render_template('output.html', out = summary,inp = s,size = size) 
         
-        # Priority given to Document
         if(f):
             uploaded_file_contents = f.read()
 
@@ -72,12 +71,10 @@ def input():
                 text = extract_text_from_txt(uploaded_file_contents)
             
             summary += extractive.summarize(text,size,"para")
-            print(summary)
             return render_template('output.html',out = summary, inp = text,size = size)
 
         if(s):
             summary += extractive.summarize(s,size,"para")
-            print(summary)
             return render_template('output.html',out = summary, inp = s,size = size)
         
         summary = ""
