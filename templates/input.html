@@ -62,11 +62,15 @@
 
                 <div class="part2">
                     <div class="height-x black head3 openSans">
-                        Input:
+                        Mode
+
+                        <input type="hidden" name="mode" id="mode" required>
+                        <div id="paragraph" class="mode head4">Paragraph</div>
+                        <div id="keyPoints" class="mode head4">Key Points</div>
                     </div>
 
                     <textarea id="textArea" name="inputText" placeholder="Paste the text here..."
-                        class="head3"></textarea>
+                        class="head3 openSans"></textarea>
 
                     <div class="height-x head3 black openSans" id="wordCount">
                         0/10000 words
@@ -149,6 +153,29 @@
         wordCount.textContent = words.length + "/10000 words";
         }
     });
+
+    //Checkboxes for paragraph and key points
+    var para = document.getElementById("paragraph");
+    var keyP = document.getElementById("keyPoints");
+    var hiddenInput = document.getElementById("mode");
+    function toggleButtons(id) {
+        if (id == "paragraph") {
+            para.classList.add("checked");
+            keyP.classList.remove("checked");
+            hiddenInput.value = "paragraph";
+        }
+
+        if (id == "keyPoints") {
+            para.classList.remove("checked");
+            keyP.classList.add("checked");
+            hiddenInput.value = "keyPoints";
+        }
+
+        console.log(hiddenInput.value);
+    }
+    para.addEventListener("click", function () { toggleButtons(para.id); });
+    keyP.addEventListener("click", function () { toggleButtons(keyP.id); });
+
 </script>
 
 </html>

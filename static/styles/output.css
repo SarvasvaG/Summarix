@@ -178,15 +178,37 @@
     margin-bottom: 0;
 }
 
-
-#copyToClipboard
+.output button,.mode
 {
-    border: none;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 0 0 7.5px;
     outline: none;
+    display: inline-block;
 
     font-size: 17.5px;
-    padding: 0px 4px;
+    padding: 0px 5px;
+    box-shadow: -1px -1px 0 0 #0000007F;
+    transition: all 0.5s ease-out;
 }
+
+.output button img{
+    width: 15px;
+}
+
+.output button:active{
+    background-color: #0000004F;
+}
+
+.mode:hover{
+    background-color: #0000001F;
+}
+
+.mode.checked{
+    background-color: #0000EE;
+    color: #FFFFFF;
+}
+
 .part3 {
     display: flex;
     justify-content: space-between;

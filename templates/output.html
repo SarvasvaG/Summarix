@@ -44,55 +44,55 @@
                     </div>
                     <div class="head4 openSans black Sans">
                         {% if size == "Small" %}
-                            <label class="container">
-                                <input type="radio" checked="checked" name="summarySize" value="Small">
-                                <span class="checkmark"></span>
-                                <div class="popup">Small</div>
-                            </label>
-                            <label class="container">
-                                <input type="radio" name="summarySize" value="Medium">
-                                <span class="checkmark"></span>
-                                <div class="popup">Medium</div>
-                            </label>
-                            <label class="container">
-                                <input type="radio" name="summarySize" value="Large">
-                                <span class="checkmark"></span>
-                                <div class="popup">Large</div>
-                            </label>
+                        <label class="container">
+                            <input type="radio" checked="checked" name="summarySize" value="Small">
+                            <span class="checkmark"></span>
+                            <div class="popup">Small</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="summarySize" value="Medium">
+                            <span class="checkmark"></span>
+                            <div class="popup">Medium</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="summarySize" value="Large">
+                            <span class="checkmark"></span>
+                            <div class="popup">Large</div>
+                        </label>
                         {% endif %}
                         {% if size == "Medium" %}
-                            <label class="container">
-                                <input type="radio"  name="summarySize" value="Small">
-                                <span class="checkmark"></span>
-                                <div class="popup">Small</div>
-                            </label>
-                            <label class="container">
-                                <input type="radio" checked="checked" name="summarySize" value="Medium">
-                                <span class="checkmark"></span>
-                                <div class="popup">Medium</div>
-                            </label>
-                            <label class="container">
-                                <input type="radio" name="summarySize" value="Large">
-                                <span class="checkmark"></span>
-                                <div class="popup">Large</div>
-                            </label>
+                        <label class="container">
+                            <input type="radio" name="summarySize" value="Small">
+                            <span class="checkmark"></span>
+                            <div class="popup">Small</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" checked="checked" name="summarySize" value="Medium">
+                            <span class="checkmark"></span>
+                            <div class="popup">Medium</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="summarySize" value="Large">
+                            <span class="checkmark"></span>
+                            <div class="popup">Large</div>
+                        </label>
                         {% endif %}
                         {% if size == "Large" %}
-                            <label class="container">
-                                <input type="radio"  name="summarySize" value="Small">
-                                <span class="checkmark"></span>
-                                <div class="popup">Small</div>
-                            </label>
-                            <label class="container">
-                                <input type="radio" name="summarySize" value="Medium">
-                                <span class="checkmark"></span>
-                                <div class="popup">Medium</div>
-                            </label>
-                            <label class="container">
-                                <input type="radio" checked="checked" name="summarySize" value="Large">
-                                <span class="checkmark"></span>
-                                <div class="popup">Large</div>
-                            </label>
+                        <label class="container">
+                            <input type="radio" name="summarySize" value="Small">
+                            <span class="checkmark"></span>
+                            <div class="popup">Small</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="summarySize" value="Medium">
+                            <span class="checkmark"></span>
+                            <div class="popup">Medium</div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" checked="checked" name="summarySize" value="Large">
+                            <span class="checkmark"></span>
+                            <div class="popup">Large</div>
+                        </label>
                         {% endif %}
                     </div>
                 </div>
@@ -100,7 +100,11 @@
                 <div class="inputOutput">
                     <div class="part2 input">
                         <div class="height-x black head3 openSans">
-                            Input
+                            Mode
+
+                            <input type="hidden" name="mode" id="mode" required>
+                            <div id="paragraph" class="mode head4">Paragraph</div>
+                            <div id="keyPoints" class="mode head4">Key Points</div>
                         </div>
 
                         <textarea id="textArea" name="inputText" placeholder="Paste the text here..."
@@ -113,7 +117,8 @@
 
                     <div class="part2 output">
                         <div class="height-x black head3 openSans">
-                            Output
+                            Summary
+                            <button type="button" id="downloadPDF"><img src="../static/images/downloadPDF.png"></button>
                             <button type="button" id="copyToClipboard"><i class="fa fa-clone"></i></button>
                         </div>
 
@@ -173,9 +178,9 @@
     const textArea = document.getElementById('textArea');
     const wordCount1 = document.getElementById('wordCount1');
     if (textArea) {
-            const text = textArea.value;
-            const words = text.split(/\s+/).filter(word => word.length > 0);
-            wordCount1.textContent = words.length + "/10000 words";
+        const text = textArea.value;
+        const words = text.split(/\s+/).filter(word => word.length > 0);
+        wordCount1.textContent = words.length + "/10000 words";
     }
     textArea.addEventListener('input', function () {
         if (textArea) {
@@ -192,14 +197,7 @@
     wordCount2.textContent = words.length + "/10000 words";
 
     const btn = document.getElementById("copyToClipboard");
-    btn.addEventListener("click",()=>{
-        console.log("clicked");
-        btn.style.fontSize="15px";
-        btn.style.opacity="0.8";
-        setTimeout(()=>{
-            btn.style.fontSize="17.5px";
-            btn.style.opacity="1";
-        }, 50);
+    btn.addEventListener("click", () => {
         const cb = navigator.clipboard;
         cb.writeText(outputText);
     });
@@ -219,6 +217,29 @@
         timesIcon.style.display = "none";
         barsIcon.style.display = "block";
     });
+
+    //Checkboxes for paragraph and key points
+    var para = document.getElementById("paragraph");
+    var keyP = document.getElementById("keyPoints");
+    var hiddenInput = document.getElementById("mode");
+    function toggleButtons(id) {
+        if (id == "paragraph") {
+            para.classList.add("checked");
+            keyP.classList.remove("checked");
+            hiddenInput.value = "paragraph";
+        }
+
+        if (id == "keyPoints") {
+            para.classList.remove("checked");
+            keyP.classList.add("checked");
+            hiddenInput.value = "keyPoints";
+        }
+
+        console.log(hiddenInput.value);
+    }
+    para.addEventListener("click", function () { toggleButtons(para.id); });
+    keyP.addEventListener("click", function () { toggleButtons(keyP.id); });
+
 </script>
 
 </html>
