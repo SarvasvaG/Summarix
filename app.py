@@ -13,7 +13,6 @@ import Email
 # model_ckpt = "google/flan-t5-base"
 # pipe = pipeline('summarization', model=model_ckpt)
 
-
 # import model
 # import testm
 
@@ -55,10 +54,11 @@ def input():
         size = request.form['summarySize']
         s = request.form['inputText']
         f = request.files['documentUpload']
+        kp = request.form['mode']
         summary = ""
         
-        if(not s and not f):
-            return render_template('output.html', out = summary,inp = s,size = size) 
+        if(not kp or (not s and not f)):
+            return render_template('input.html',text = s) 
         
         if(f):
             uploaded_file_contents = f.read()
@@ -70,12 +70,12 @@ def input():
             else:
                 text = extract_text_from_txt(uploaded_file_contents)
             
-            summary += extractive.summarize(text,size,"para")
-            return render_template('output.html',out = summary, inp = text,size = size)
+            summary += extractive.summarize(text,size,kp)
+            return render_template('output.html',out = summary, inp = text,size = size,type = kp)
 
         if(s):
-            summary += extractive.summarize(s,size,"para")
-            return render_template('output.html',out = summary, inp = s,size = size)
+            summary += extractive.summarize(s,size,kp)
+            return render_template('output.html',out = summary, inp = s,size = size,type = kp)
         
         summary = ""
         f = None

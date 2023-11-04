@@ -17,11 +17,11 @@ def summarize(text,size,style):
     words = word_tokenize(newText)
     k=0
     if(size=="Small"):
-        k=1.9
+        k=1.8
     if(size=="Medium"):
-        k=1.78
+        k=1.68
     if(size=="Large"):
-        k=1.62
+        k=1.52
     freqTable = dict()
     for word in words:
         word = word.lower()
@@ -55,10 +55,9 @@ def summarize(text,size,style):
         if (sentence in sentenceValue) and (sentenceValue[sentence] > (k * average)):
             sentence = ' '.join(re.sub(r'\s+', ' ', sentence).splitlines())
             
-            if(style=="BullPt"):
-                summary += " \n "
-                summary += "\u2022 " + sentence + "\n"
-            else:
+            if(style=="keyPoints"):
+                summary += "\u2022 " + sentence + "\n\n"
+            elif (style == "paragraph"):
 
                 ct+=1
                 summary+=" "+sentence

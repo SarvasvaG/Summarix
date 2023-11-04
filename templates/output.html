@@ -17,7 +17,7 @@
         <div class="bgImg"></div>
         <div class="navBar">
             <nav>
-                <a href="index.html"><img src="../static/images/logo.png" alt="logo"></a>
+                <a href="/"><img src="../static/images/logo.png" alt="logo"></a>
                 <div class="navLinks">
 
                     <i class="fa fa-times"></i>
@@ -102,9 +102,17 @@
                         <div class="height-x black head3 openSans">
                             Mode
 
-                            <input type="hidden" name="mode" id="mode" required>
-                            <div id="paragraph" class="mode head4">Paragraph</div>
-                            <div id="keyPoints" class="mode head4">Key Points</div>
+                            {% if type == "paragraph" %}
+                                <input type="hidden" name="mode" id="mode" value="paragraph" required>
+                                <div id="paragraph" class="mode head4 checked">Paragraph</div>
+                                <div id="keyPoints" class="mode head4">Key Points</div>    
+                            {% endif %}
+                            {% if type == "keyPoints" %}
+                                <input type="hidden" name="mode" id="mode" value="keyPoints" required>
+                                <div id="paragraph" class="mode head4">Paragraph</div>
+                                <div id="keyPoints" class="mode head4 checked">Key Points</div>    
+                            {% endif %}
+                            
                         </div>
 
                         <textarea id="textArea" name="inputText" placeholder="Paste the text here..."
