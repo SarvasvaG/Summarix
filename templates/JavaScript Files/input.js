@@ -51,7 +51,7 @@ textArea.addEventListener('input', function () {
 });
 
 //Checkboxes for paragraph and key points
-function decideModesOptions(s1, s2, s3, s4, changeVal) {
+function decideModesOptions(s1, s2, s3, s4) {
     var x = document.getElementById(s1);
     var y = document.getElementById(s2);
     var z = document.getElementById(s3);
@@ -67,6 +67,8 @@ function decideModesOptions(s1, s2, s3, s4, changeVal) {
             y.classList.add(s4);
             z.value = s2;
         }
+
+        console.log(z);
     }
     x.addEventListener("click", function () { toggleButtons(x.id); });
     y.addEventListener("click", function () { toggleButtons(y.id); });

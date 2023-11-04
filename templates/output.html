@@ -148,9 +148,18 @@
                     </div>
 
                     <div>
-                        <div id="extractive" class="option btn head3 gray openSans">Selective</div>
+                        {% if type_sum == "extractive" %}
+                        <div id="extractive" class="option btn head3 gray openSans checked">Selective</div>
                         <div id="abstractive" class="option btn head3 gray openSans">Rephrased</div>
-                        <input type="hidden" id="option" name="option" required>
+                        <input type="hidden" id="option" name="option" value="extractive" required>
+                        {% endif %}
+
+                        {% if type_sum == "abstractive" %}
+                        <div id="extractive" class="option btn head3 gray openSans">Selective</div>
+                        <div id="abstractive" class="option btn head3 gray openSans checked">Rephrased</div>
+                        <input type="hidden" id="option" name="option" value="abstractive" required>
+                        {% endif %}
+                        
                         <input type="submit" name="submit" value="Summarize" class="btn head3 gray openSans">
                     </div>
                 </div>
