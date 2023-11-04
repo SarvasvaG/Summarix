@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    
+
     <section class="header">
         <div class="bgImg"></div>
         <div class="navBar">
@@ -35,7 +35,7 @@
     </section>
 
     <div class="section1">
-        <form action="/input" method="post" enctype = "multipart/form-data">
+        <form action="/input" method="post" enctype="multipart/form-data">
             <div class="inputSection">
                 <div class="part1 height-x">
                     <div class="head3 gray openSans">
@@ -78,16 +78,22 @@
                 </div>
 
                 <div class="part3">
+
                     <div>
                         <input type="file" name="documentUpload" id="documentUpload" accept=".txt, .pdf,.docx"
                             style="display: none;">
-                        <button type="button" id="customUploadButton" class="btn head3 gray openSans">Upload
-                            Document</button>
+                        <button type="button" id="customUploadButton" class="btn head3 gray openSans"><img
+                                src="../static/images/uploadFile.png" alt="uploadFile">Document</button>
                         <span id="fileName" class="head4 gray openSans"></span>
                     </div>
+
                     <div>
+                        <div id="extractive" class="option btn head3 gray openSans">Selective</div>
+                        <div id="abstractive" class="option btn head3 gray openSans">Rephrased</div>
+                        <input type="hidden" id="option" name="option" required>
                         <input type="submit" name="submit" value="Summarize" class="btn head3 gray openSans">
                     </div>
+
                 </div>
             </div>
         </form>
@@ -123,7 +129,7 @@
         timesIcon.style.display = "none";
         barsIcon.style.display = "block";
     });
-    
+
     // Trigger the file input and update the button's text with the selected file name
     const fileInput = document.getElementById("documentUpload");
     const customUploadButton = document.getElementById("customUploadButton");
@@ -141,41 +147,45 @@
 
     const textArea = document.getElementById('textArea');
     const wordCount = document.getElementById('wordCount');
-    if(textArea){
+    if (textArea) {
         const text = textArea.value;
         const words = text.split(/\s+/).filter(word => word.length > 0);
         wordCount.textContent = words.length + "/10000 words";
     }
     textArea.addEventListener('input', function () {
-        if(textArea){
-        const text = textArea.value;
-        const words = text.split(/\s+/).filter(word => word.length > 0);
-        wordCount.textContent = words.length + "/10000 words";
+        if (textArea) {
+            const text = textArea.value;
+            const words = text.split(/\s+/).filter(word => word.length > 0);
+            wordCount.textContent = words.length + "/10000 words";
         }
     });
 
     //Checkboxes for paragraph and key points
-    var para = document.getElementById("paragraph");
-    var keyP = document.getElementById("keyPoints");
-    var hiddenInput = document.getElementById("mode");
-    function toggleButtons(id) {
-        if (id == "paragraph") {
-            para.classList.add("checked");
-            keyP.classList.remove("checked");
-            hiddenInput.value = "paragraph";
+    function decideModesOptions(s1, s2, s3, s4, changeVal) {
+        var x = document.getElementById(s1);
+        var y = document.getElementById(s2);
+        var z = document.getElementById(s3);
+        console.log(z);
+        function toggleButtons(id) {
+            if (id == s1) {
+                x.classList.add(s4);
+                y.classList.remove(s4);
+                z.changeVal = s1;
+            }
+
+            if (id == s2) {
+                x.classList.remove(s4);
+                y.classList.add(s4);
+                z.changeVal = s2;
+            }
         }
 
-        if (id == "keyPoints") {
-            para.classList.remove("checked");
-            keyP.classList.add("checked");
-            hiddenInput.value = "keyPoints";
-        }
-
-        console.log(hiddenInput.value);
+        x.addEventListener("click", function () { toggleButtons(x.id); });
+        y.addEventListener("click", function () { toggleButtons(y.id); });
     }
-    para.addEventListener("click", function () { toggleButtons(para.id); });
-    keyP.addEventListener("click", function () { toggleButtons(keyP.id); });
 
+    decideModesOptions("paragraph", "keyPoints", "mode", "checked", "value");
+    decideModesOptions("extractive", "abstractive", "option", "checked", "value");
 </script>
 
 </html>

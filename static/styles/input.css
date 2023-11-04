@@ -3,7 +3,7 @@
 @import url('./partials/footer.css');
 
 .section1 {
-    min-height: 100vh;
+    min-height: 110vh;
     background: url('../images/line.png');
 
     background-size: 200% 200%;
@@ -132,22 +132,20 @@
     background-color: var(--white);
 }
 
-.part2>div:first-child, .part2>div:last-child {
+.part2>div:first-child,
+.part2>div:last-child {
     height: 30px;
     padding: 5px;
     border-radius: 15px 15px 0px 0px;
     margin-bottom: 5px;
 }
 
-
-.part2>div:last-child
-{
+.part2>div:last-child {
     border-radius: 0px 0px 15px 15px;
     margin-bottom: 0;
 }
 
-.mode
-{
+.mode {
     border: 1px solid black;
     border-radius: 5px;
     margin: 0 0 0 7.5px;
@@ -160,17 +158,18 @@
     transition: all 0.5s ease-out;
 }
 
-.mode:hover{
+.mode:hover {
     background-color: #0000001F;
 }
 
-.mode.checked{
+.mode.checked {
     background-color: #0000EE;
     color: #FFFFFF;
 }
 
 .part3 {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     padding: 10px 0px;
@@ -187,16 +186,38 @@
     font-weight: 500;
     font-family: 'Roboto', sans-serif;
 
-    padding: 10px 20px;
-    background-color: #0000ee;
+    padding: 10px 10px;
+    margin: 0px 1.5px 5px 1.5px;
+    background-color: #0000EE;
     border-radius: 30px;
     border: 1px solid #000000;
 
+    transition: all 0.5s ease-out;
+
+}
+
+.part3 img {
+    width: 17.5px;
+    padding: 0px 5px 0px 0px;
+}
+
+.part3 .btn.option {
+    background-color: transparent;
+    border: 1px solid #FFFFFF;
+}
+
+.part3 .btn.checked {
+    background-color: #0000EE;
+    border: none;
+}
+
+.part3 .btn:not(.option):hover {
+    background-color: #0000EE7F;
+    border: 1px solid #FFFFFF;
 }
 
 .part3 .btn:hover {
-    background-color: #0000EE7F;
-    border: 1px solid #FFFFFF;
+    cursor: pointer;
 }
 
 .part3 #fileName {
@@ -257,8 +278,21 @@
         top: -30px;
     }
 
+    .mode {
+        margin: 0 0 0 6.25px;
+        outline: none;
+        display: inline-block;
+
+        font-size: 12.5px;
+        padding: 0px 3px;
+    }
+
     .part2 {
         border-radius: 20px;
+    }
+
+    .mode:hover {
+        background-color: #0000001F;
     }
 
     .part2 textarea {
@@ -281,10 +315,12 @@
     }
 
     .part3 {
-        display: flex;
-        justify-content: space-between;
-
         padding: 8px 0px;
+    }
+
+    .part3 img {
+        width: 12.5px;
+        padding: 0px 3px 0px 0px;
     }
 
     .part3 .btn {
