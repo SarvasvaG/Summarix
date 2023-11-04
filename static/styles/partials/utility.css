@@ -28,14 +28,61 @@
     font-family: 'Roboto', sans-serif;
 }
 
+:root {
+
+    /*Colors*/
+    --white: #FFFFFF;
+    --transparentWhite: #FFFFFF7F;
+    --blue: #0000EE;
+    --transparentBlue: #0000EE7F;
+    --black: #000000;
+    --transparentBlack: #000000AF;
+    --highTransBlack: #0000001F;
+
+    /*Font-Sizes*/
+    --head1: 55px;
+    --head2: 35px;
+    --head3: 20px;
+
+    /*Font-Families*/
+    --family1: 'Montserrat', sans-serif;
+    --family2: 'Roboto', sans-serif;
+}
+
+/*Animations*/
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 /*Scroll-Bar*/
 ::-webkit-scrollbar {
-    width:8px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #00000000;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -45,7 +92,7 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555555;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 /*Pop-Up*/
@@ -69,4 +116,8 @@
 
 .container:hover .popup {
     display: block;
+}
+
+.displayNone {
+    display: none;
 }

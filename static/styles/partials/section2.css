@@ -1,0 +1,63 @@
+.section2 {
+    position: relative;
+    padding-bottom: 5%;
+}
+
+.section2::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.section2>h1,
+.section2>p {
+    text-align: center;
+
+    width: 80%;
+    margin: auto;
+    padding-top: 100px;
+}
+
+.contentContainer {
+    width: 80%;
+    margin: 5% auto 0 auto;
+    text-align: center;
+}
+
+.content {
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+
+    transition: all 0.2s ease-out;
+}
+
+.content img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.content h3 {
+    margin: 20px 0px;
+}
+
+.content p {
+    line-height: 25px;
+}
+
+@media (max-width: 768px) {
+    .section2 h1 {
+        padding-top: 75px;
+    }
+
+    .content img {
+        width: 175px;
+        height: 175px;
+    }
+}

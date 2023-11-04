@@ -1,0 +1,310 @@
+.section1 {
+    min-height: 110vh;
+    background: url('../../images/line.png');
+
+    background-size: 200% 200%;
+    animation: gradientAnimation 30s ease infinite;
+}
+
+/*Part 1 code*/
+.part1 {
+    display: flex;
+    justify-content: space-between;
+    color: var(--white);
+
+    height: 30px;
+    padding: 0px 5px;
+}
+
+/*Size buttons code*/
+.container {
+    display: inline;
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 6.25px;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--white);
+    border-radius: 50%;
+}
+
+.container:hover input~.checkmark {
+    background-color: var(--white);
+}
+
+.container input:checked~.checkmark {
+    background-color: var(--blue);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    top: 6.25px;
+    left: 6.25px;
+    width: 7.5px;
+    height: 7.5px;
+    border-radius: 50%;
+    background: white;
+}
+
+.part2 {
+    width: 100%;
+    border-radius: 10px;
+
+    box-sizing: border-box;
+}
+
+.inputSection {
+    width: 70%;
+    color: var(--white);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%,-40%);
+    z-index: 0;
+}
+
+.part2 textarea {
+    height: 50vh;
+    width: 100%;
+
+    background-color: var(--white);
+
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+
+    overflow-x: hidden;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+}
+
+.part2 div {
+    background-color: var(--white);
+}
+
+.part2>div:first-child,
+.part2>div:last-child {
+    height: 30px;
+    padding: 5px;
+    border-radius: 15px 15px 0px 0px;
+    margin-bottom: 5px;
+}
+
+.part2>div:last-child {
+    border-radius: 0px 0px 15px 15px;
+    margin-bottom: 0;
+}
+
+.mode {
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    margin: 0 0 0 7.5px;
+    outline: none;
+    display: inline-block;
+
+    font-size: 17.5px;
+    padding: 0px 5px;
+    box-shadow: -1px -1px 0 0 var(--transparentBlack);
+    transition: all 0.5s ease-out;
+}
+
+.mode:hover {
+    background-color: var(--highTransBlack);
+}
+
+.mode.checked {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.part3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    padding: 10px 0px;
+}
+
+.part3 .btn {
+    display: inline-block;
+
+    text-decoration: none;
+    color: var(--white);
+    letter-spacing: 0.5px;
+
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+
+    padding: 10px 10px;
+    margin: 0px 1.5px 5px 1.5px;
+    background-color: var(--blue);
+    border-radius: 30px;
+    border: 1px solid var(--black);
+
+    transition: all 0.5s ease-out;
+
+}
+
+.part3 img {
+    width: 17.5px;
+    padding: 0px 5px 0px 0px;
+}
+
+.part3 .btn.option {
+    background-color: transparent;
+    border: 1px solid var(--white);
+}
+
+.part3 .btn.checked {
+    background-color: var(--blue);
+    border: none;
+}
+
+.part3 .btn:not(.option):hover {
+    background-color: var(--transparentBlue);
+    border: 1px solid var(--white);
+}
+
+.part3 .btn:hover {
+    cursor: pointer;
+}
+
+.part3 #fileName {
+    display: inline-block;
+
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    padding: 10px;
+    position: relative;
+    top: 20px;
+}
+
+@media (max-width: 768px) {
+
+    .head3,
+    .head4 {
+        font-size: 15px;
+    }
+
+    .inputSection {
+        width: 80%;
+    }
+
+    .part1 {
+        height: 25px;
+        padding: 0px 3px;
+    }
+
+    .container {
+        padding-left: 22px;
+        margin-bottom: 4px;
+    }
+
+    .checkmark {
+        height: 15px;
+        width: 15px;
+    }
+
+    .container .checkmark:after {
+        top: 5px;
+        left: 4.8px;
+        width: 5px;
+        height: 5px;
+    }
+
+    .container {
+        top: -4.5px;
+    }
+
+    .popup {
+        padding: 2px;
+        top: -30px;
+    }
+
+    .mode {
+        margin: 0 0 0 6.25px;
+
+        font-size: 12.5px;
+        padding: 0px 3px;
+    }
+
+    .part2 {
+        border-radius: 20px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .part2 textarea {
+        padding: 6.25px;
+    }
+
+    .part2>div:first-child {
+        height: 20px;
+        padding: 4.5px;
+
+        border-radius: 10px 10px 0px 0px;
+        margin-bottom: 3px;
+    }
+
+    .part2>div:last-child {
+        height: 20px;
+        padding: 4.5px;
+
+        border-radius: 0px 0px 10px 10px;
+    }
+
+    .part3 {
+        padding: 8px 0px;
+    }
+
+    .part3 img {
+        width: 12.5px;
+        padding: 0px 3px 0px 0px;
+    }
+
+    .part3 .btn {
+        padding: 4.5px 10px;
+        border-radius: 20px;
+        font-size: 15px;
+    }
+
+    .part3 #fileName {
+        max-width: 80px;
+        padding: 4.5px;
+        top: 12px;
+    }
+}

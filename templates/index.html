@@ -5,22 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summarix - The Summarizer</title>
+
     <link href="../static/styles/style.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="icon" href="../static/images/logo.png">
 </head>
 
 <body>
-
     <section class="header">
         <div class="bgImg"></div>
+
         <div class="navBar">
             <nav>
                 <a href="/"><img src="../static/images/logo.png" alt="logo"></a>
+
                 <div class="navLinks">
-
                     <i class="fa fa-times"></i>
-
                     <ul>
                         <li><a href="/">HOME</a></li>
                         <li><a href="/input">SUMMARIZER</a></li>
@@ -29,6 +31,7 @@
                         <li><a href="/about">ABOUT US</a></li>
                     </ul>
                 </div>
+
                 <i class="fa fa-bars"></i>
             </nav>
         </div>
@@ -43,10 +46,11 @@
         </div>
     </section>
 
-    <section class="features" id="features">
+    <section class="section2" id="features">
         <h1>Why choose Summarix?</h1>
-        <div class="featureContainer">
-            <div class="feature">
+
+        <div class="contentContainer">
+            <div class="content">
                 <img src="../static/images/pdfDocx.jpg">
                 <div>
                     <h3>Unlocking Versatility: Seamlessly Input Text, PDFs, and DOCX Files.</h3>
@@ -57,7 +61,7 @@
                 </div>
             </div>
 
-            <div class="feature">
+            <div class="content">
                 <img src="../static/images/size.webp">
                 <div>
                     <h3>Summaries, Sized to Suit: Short, Medium, or Large - Your Pick!</h3>
@@ -67,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="feature">
+            <div class="content">
                 <img src="../static/images/wordCount.jpg">
                 <div>
                     <h3>Word Count Monitoring.</h3>
@@ -78,11 +82,23 @@
                 </div>
             </div>
 
+            <div class="content">
+                <img src="../static/images/paraKeyP.jpg">
+                <div>
+                    <h3>Versatile Summarization: Paragraphs and Bullet Points.</h3>
+                    <p>Experience the versatility of our summarization feature. With our tool, you can effortlessly
+                        generate summaries in both paragraph and bullet point formats. Simplify complex information,
+                        enhance comprehension, and tailor your summaries to suit your specific needs.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <section class="contactForm" id="contact">
         <div class="contactBox">
+
             <h1>Contact Us</h1>
             <p>For any questions, assistance, or partnership opportunities, please don't hesitate to get in touch with
                 us.
@@ -99,14 +115,13 @@
                 <label for="message">Message</label>
                 <textarea id="message" name="message" placeholder="Your message..." required></textarea>
 
-                <!-- <a href="/input">SUBMIT</a> -->
                 <input type="submit" name="submit" value="Submit" class="submitContact">
+            </form>
+
         </div>
-        </form>
     </section>
 
     <section class="footer">
-
         <p>Transforming Information Overload into Clarity: Elevate Your Understanding with Summarix.</p>
 
         <a href=""><i class="fa fa-facebook"></i></a>
@@ -115,55 +130,8 @@
         <a href=""><i class="fa fa-linkedin"></i></a>
 
         <p><i class="fa fa-copyright"></i> Summarix, 2023. All Rights Reserved.</p>
-
     </section>
 </body>
 
-<script>
-    const barsIcon = document.querySelector(".fa-bars");
-    const timesIcon = document.querySelector(".fa-times");
-    const navLinks = document.querySelector(".navLinks");
-
-    barsIcon.addEventListener("click", function () {
-        navLinks.classList.add("show");
-        barsIcon.style.display = "none";
-        timesIcon.style.display = "block";
-    });
-
-    timesIcon.addEventListener("click", function () {
-        navLinks.classList.remove("show");
-        timesIcon.style.display = "none";
-        barsIcon.style.display = "block";
-    });
-
-    function isElementInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        const featureHeight = element.offsetHeight;
-        return (
-            (rect.top + featureHeight * 0.2) <= windowHeight &&
-            (rect.bottom - featureHeight * 0.2) >= 0
-        );
-    }
-
-    function handleScroll() {
-        const features = document.querySelectorAll('.feature');
-
-        features.forEach((feature) => {
-            if (isElementInViewport(feature)) {
-                feature.classList.add('active');
-            }
-        });
-
-        const contactSection = document.querySelector('.contactBox');
-        if (isElementInViewport(contactSection)) {
-            contactSection.classList.add('active');
-        }
-    }
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('load', handleScroll);
-
-</script>
-
+<script src="./JavaScript Files/index.js" ></script>
 </html>

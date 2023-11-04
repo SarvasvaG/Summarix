@@ -70,7 +70,7 @@
                     </div>
 
                     <textarea id="textArea" name="inputText" placeholder="Paste the text here..."
-                        class="head3 openSans">{{text}}</textarea>
+                        class="head3 openSans"></textarea>
 
                     <div class="height-x head3 black openSans" id="wordCount">
                         0/10000 words
@@ -113,79 +113,6 @@
     </section>
 </body>
 
-<script>
-    const barsIcon = document.querySelector(".fa-bars");
-    const timesIcon = document.querySelector(".fa-times");
-    const navLinks = document.querySelector(".navLinks");
-
-    barsIcon.addEventListener("click", function () {
-        navLinks.classList.add("show");
-        barsIcon.style.display = "none";
-        timesIcon.style.display = "block";
-    });
-
-    timesIcon.addEventListener("click", function () {
-        navLinks.classList.remove("show");
-        timesIcon.style.display = "none";
-        barsIcon.style.display = "block";
-    });
-
-    // Trigger the file input and update the button's text with the selected file name
-    const fileInput = document.getElementById("documentUpload");
-    const customUploadButton = document.getElementById("customUploadButton");
-    const fileName = document.getElementById("fileName");
-
-    fileInput.addEventListener("change", function () {
-        if (fileInput.files.length > 0) {
-            fileName.textContent = " " + fileInput.files[0].name;
-        }
-    });
-
-    customUploadButton.addEventListener("click", function () {
-        fileInput.click();
-    });
-
-    const textArea = document.getElementById('textArea');
-    const wordCount = document.getElementById('wordCount');
-    if (textArea) {
-        const text = textArea.value;
-        const words = text.split(/\s+/).filter(word => word.length > 0);
-        wordCount.textContent = words.length + "/10000 words";
-    }
-    textArea.addEventListener('input', function () {
-        if (textArea) {
-            const text = textArea.value;
-            const words = text.split(/\s+/).filter(word => word.length > 0);
-            wordCount.textContent = words.length + "/10000 words";
-        }
-    });
-
-    //Checkboxes for paragraph and key points
-    function decideModesOptions(s1, s2, s3, s4, changeVal) {
-        var x = document.getElementById(s1);
-        var y = document.getElementById(s2);
-        var z = document.getElementById(s3);
-        console.log(z);
-        function toggleButtons(id) {
-            if (id == s1) {
-                x.classList.add(s4);
-                y.classList.remove(s4);
-                z.changeVal = s1;
-            }
-
-            if (id == s2) {
-                x.classList.remove(s4);
-                y.classList.add(s4);
-                z.changeVal = s2;
-            }
-        }
-
-        x.addEventListener("click", function () { toggleButtons(x.id); });
-        y.addEventListener("click", function () { toggleButtons(y.id); });
-    }
-
-    decideModesOptions("paragraph", "keyPoints", "mode", "checked", "value");
-    decideModesOptions("extractive", "abstractive", "option", "checked", "value");
-</script>
+<script src="./JavaScript Files/input.js"></script>
 
 </html>

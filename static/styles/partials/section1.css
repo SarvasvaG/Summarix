@@ -1,0 +1,66 @@
+.textBox {
+    color: var(--white);
+    text-align: center;
+
+    animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+    z-index: 0;
+
+    width: 80%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.textBox h1 {
+    font-size: var(--head1);
+    font-family: var(--family1);
+}
+
+.textBox p {
+    font-size: var(--head3);
+    font-weight: 500;
+    font-family: var(--family2);
+
+    margin: 20px 40px;
+}
+
+.textBox a {
+    display: inline-block;
+
+    text-decoration: none;
+    color: var(--white);
+    letter-spacing: 0.5px;
+
+    font-size: var(--head3);
+    font-weight: 500;
+    font-family: var(--family2);
+
+    padding: 10px var(--head3);
+    background-color: var(--blue);
+    border-radius: 30px;
+    border: 1px solid var(--black);
+}
+
+.textBox a:hover {
+    background-color: var(--transparentBlue);
+    border: 1px solid var(--white);
+}
+
+@media (max-width: 768px) {
+    .textBox {
+        width: 90%;
+    }
+
+    .textBox h1 {
+        font-size: 40px;
+    }
+
+    .textBox a {
+        font-size: 15px;
+    }
+
+    .textBox p {
+        font-size: 15px;
+    }
+}

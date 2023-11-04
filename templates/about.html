@@ -45,37 +45,37 @@
         </div>
     </section>
 
-    <section class="teamSection">
+    <section class="section2">
         <h1>The Team</h1>
         <p>Our Progress Begins with Our Team - Get Acquainted with the contributors.</p>
 
-        <div class="members">
+        <div class="contentContainer">
             <button class="btn" id="prev">&lt;</button>
-            <div class="member">
+            <div class="content">
                 <img src="../static/images/Sarvasva.jpg" alt="">
                 <h3>Sarvasva Gupta</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
             </div>
 
-            <div class="member">
+            <div class="content">
                 <img src="../static/images/Anvit.jpg" alt="">
                 <h3>Anvit Gupta</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
             </div>
 
-            <div class="member">
+            <div class="content">
                 <img src="../static/images/Vineet.jpg" alt="">
                 <h3>Vineet Kumar</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
             </div>
 
-            <div class="member">
+            <div class="content">
                 <img src="../static/images/Utkarsh.jpg" alt="">
                 <h3>Utkarsh Lohiya</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
             </div>
 
-            <div class="member">
+            <div class="content">
                 <img src="../static/images/Krishna.jpg" alt="">
                 <h3>Krishna Aggarwal</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni, at.</p>
@@ -98,75 +98,6 @@
     </section>
 </body>
 
-<script>
-    var members = document.getElementsByClassName("member");
-    var index = 0;
-    var len = members.length;
-
-    function showMember() {
-        for (var i = 0; i < len; i++)
-            members[i].classList.add("hide");
-
-        members[index % 5].classList.remove("hide");
-        index++;
-
-        console.log(index);
-    };
-
-    function startInterval() {
-        x = setInterval(showMember, 3000);
-    }
-
-    function showPrevMember() {
-        index = (index - 2);
-        if (index < 0)
-            index = 4;
-        index = index;
-        clearInterval(x);
-        showMember();
-        startInterval();
-    }
-
-    function showNextMember() {
-        clearInterval(x);
-        showMember();
-        startInterval();
-    }
-    showMember();
-    startInterval();
-
-    for (var i = 0; i < len; i++) {
-        members[i].addEventListener("mouseover", () => {
-            clearInterval(x); // Clear the interval when the mouse is over
-        });
-
-        members[i].addEventListener("mouseout", () => {
-            startInterval(); // Restart the interval when the mouse moves out
-        });
-    }
-
-    var prevBtn = document.getElementById("prev");
-    var nextBtn = document.getElementById("next");
-
-    prevBtn.addEventListener("click", showPrevMember);
-    nextBtn.addEventListener("click", showNextMember);
-
-    const barsIcon = document.querySelector(".fa-bars");
-    const timesIcon = document.querySelector(".fa-times");
-    const navLinks = document.querySelector(".navLinks");
-
-    barsIcon.addEventListener("click", function () {
-        navLinks.classList.add("show");
-        barsIcon.style.display = "none";
-        timesIcon.style.display = "block";
-    });
-
-    timesIcon.addEventListener("click", function () {
-        navLinks.classList.remove("show");
-        timesIcon.style.display = "none";
-        barsIcon.style.display = "block";
-    });
-
-</script>
+<script src="./JavaScript Files/about.js"></script>
 
 </html>

@@ -1,115 +1,8 @@
 @import url('./partials/nav.css');
 @import url('./partials/utility.css');
 @import url('./partials/footer.css');
+@import url('./partials/inputOutput.css');
 
-.section1 {
-    min-height: 110vh;
-    background: url('../images/line.png');
-
-    background-size: 200% 200%;
-    animation: gradientAnimation 30s ease infinite;
-}
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.part1 {
-    display: flex;
-    justify-content: space-between;
-    color: var(--white);
-
-    height: 30px;
-    padding: 0px 5px;
-}
-
-.container {
-    display: inline;
-    position: relative;
-    padding-left: 32px;
-    margin-bottom: 6.25px;
-    cursor: pointer;
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 20px;
-    width: 20px;
-    background-color: var(--white);
-    border-radius: 50%;
-}
-
-.container:hover input~.checkmark {
-    background-color: var(--white);
-}
-
-.container input:checked~.checkmark {
-    background-color: #0000EE;
-}
-
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-.container input:checked~.checkmark:after {
-    display: block;
-}
-
-.container .checkmark:after {
-    top: 6.25px;
-    left: 6.25px;
-    width: 7.5px;
-    height: 7.5px;
-    border-radius: 50%;
-    background: white;
-}
-
-.part2 {
-    width: 50%;
-    border-radius: 10px;
-
-    box-sizing: border-box;
-}
-
-.inputSection {
-    width: 70%;
-    color: #FFFFFF;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -40%);
-    animation: fadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1);
-    z-index: 0;
-}
-
-.part2 textarea,
 .part2 .outputBox {
     height: 50vh;
     width: 100%;
@@ -128,24 +21,7 @@
 .part2 .outputBox {
     margin-bottom: 4px;
     overflow-y: scroll;
-    color: #000000;
-}
-
-.part2 div {
-    background-color: var(--white);
-}
-
-.part2>div:first-child,
-.part2>div:last-child {
-    height: 30px;
-    padding: 5px;
-    border-radius: 15px 15px 0px 0px;
-    margin-bottom: 5px;
-}
-
-.part2>div:last-child {
-    border-radius: 0px 0px 15px 15px;
-    margin-bottom: 0;
+    color: var(--black);
 }
 
 .inputOutput {
@@ -177,9 +53,8 @@
     margin-bottom: 0;
 }
 
-.output button,
-.mode {
-    border: 1px solid black;
+.output button {
+    border: 1px solid var(--black);
     border-radius: 5px;
     margin: 0 0 0 7.5px;
     outline: none;
@@ -187,8 +62,8 @@
 
     font-size: 17.5px;
     padding: 0px 5px;
-    box-shadow: -1px -1px 0 0 #0000007F;
-    transition: all 0.5s ease-out;
+    box-shadow: -1px -1px 0 0 var(--transparentBlack);
+    transition: all 0.25s ease-out;
 }
 
 .output button img {
@@ -196,98 +71,10 @@
 }
 
 .output button:active {
-    background-color: #0000004F;
-}
-
-.mode:hover {
-    background-color: #0000001F;
-}
-
-.mode.checked {
-    background-color: #0000EE;
-    color: #FFFFFF;
-}
-
-.part3 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    padding: 10px 0px;
-}
-
-.part3 .btn {
-    display: inline-block;
-
-    text-decoration: none;
-    color: #FFFFFF;
-    letter-spacing: 0.5px;
-
-    font-size: 20px;
-    font-weight: 500;
-    font-family: 'Roboto', sans-serif;
-
-    padding: 10px 10px;
-    margin: 1.5px;
-    background-color: #0000EE;
-    border-radius: 30px;
-    border: 1px solid #000000;
-
-    transition: all 0.5s ease-out;
-
-}
-
-.part3>div {
-    margin-bottom: 5px;
-}
-
-
-.part3 img {
-    width: 17.5px;
-    padding: 0px 5px 0px 0px;
-}
-
-.part3 .btn.option {
-    background-color: transparent;
-    border: 1px solid #FFFFFF;
-}
-
-.part3 .btn.checked {
-    background-color: #0000EE;
-    border: none;
-}
-
-.part3 .btn:not(.option):hover {
-    background-color: #0000EE7F;
-    border: 1px solid #FFFFFF;
-}
-
-.part3 .btn:hover {
-    cursor: pointer;
-}
-
-.part3 #fileName {
-    display: inline-block;
-
-    max-width: 200px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    padding: 10px;
-    position: relative;
-    top: 20px;
+    background-color: var(--transparentBlack);
 }
 
 @media (max-width: 768px) {
-
-    .head3 {
-        font-size: 15px;
-    }
-
-    .head4 {
-        font-size: 15px;
-    }
 
     .inputSection {
         width: 80%;
@@ -297,61 +84,10 @@
         margin: auto;
     }
 
-    .part1 {
-        height: 25px;
-        padding: 0px 3px;
-    }
-
-    .container {
-        padding-left: 22px;
-        margin-bottom: 4px;
-    }
-
-    .checkmark {
-        height: 15px;
-        width: 15px;
-    }
-
-    .container .checkmark:after {
-        top: 5px;
-        left: 4.8px;
-        width: 5px;
-        height: 5px;
-    }
-
-    .container {
-        top: -4.5px;
-    }
-
-    .popup {
-        padding: 2px;
-        top: -30px;
-    }
-
     .inputOutput {
         flex-direction: column;
     }
 
-    .mode {
-        margin: 0 0 0 6.25px;
-        outline: none;
-        display: inline-block;
-
-        font-size: 12.5px;
-        padding: 0px 3px;
-    }
-
-    .mode:hover {
-        background-color: #0000001F;
-    }
-
-    .part2 {
-        border-radius: 20px;
-        margin-bottom: 10px;
-        width: 100%;
-    }
-
-    .part2 textarea,
     .part2 .outputBox {
         padding: 6.25px;
     }
@@ -369,26 +105,5 @@
         padding: 4.5px;
 
         border-radius: 0px 0px 10px 10px;
-    }
-
-    .part3 {
-        padding: 8px 0px;
-    }
-
-    .part3 img {
-        width: 12.5px;
-        padding: 0px 3px 0px 0px;
-    }
-
-    .part3 .btn {
-        padding: 4.5px 10px;
-        border-radius: 20px;
-        font-size: 15px;
-    }
-
-    .part3 #fileName {
-        max-width: 80px;
-        padding: 4.5px;
-        top: 12px;
     }
 }
