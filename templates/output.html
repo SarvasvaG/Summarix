@@ -148,9 +148,18 @@
                     </div>
 
                     <div>
-                        <div id="extractive" class="option btn head3 gray openSans">Selective</div>
+                        {% if type_sum == "extractive" %}
+                        <div id="extractive" class="option btn head3 gray openSans checked">Selective</div>
                         <div id="abstractive" class="option btn head3 gray openSans">Rephrased</div>
-                        <input type="hidden" id="option" name="option" required>
+                        <input type="hidden" id="option" name="option" value="extractive" required>
+                        {% endif %}
+
+                        {% if type_sum == "abstractive" %}
+                        <div id="extractive" class="option btn head3 gray openSans">Selective</div>
+                        <div id="abstractive" class="option btn head3 gray openSans checked">Rephrased</div>
+                        <input type="hidden" id="option" name="option" value="abstractive" required>
+                        {% endif %}
+                        
                         <input type="submit" name="submit" value="Summarize" class="btn head3 gray openSans">
                     </div>
                 </div>
@@ -229,8 +238,8 @@
         barsIcon.style.display = "block";
     });
 
-    //Checkboxes for paragraph and key points
-    function decideModesOptions(s1, s2, s3, s4, changeVal) {
+     //Checkboxes for paragraph and key points
+     function decideModesOptions(s1, s2, s3, s4) {
         var x = document.getElementById(s1);
         var y = document.getElementById(s2);
         var z = document.getElementById(s3);
@@ -238,13 +247,13 @@
             if (id == s1) {
                 x.classList.add(s4);
                 y.classList.remove(s4);
-                z.changeVal = s1;
+                z.value = s1;
             }
 
             if (id == s2) {
                 x.classList.remove(s4);
                 y.classList.add(s4);
-                z.changeVal = s2;
+                z.value = s2;
             }
         }
 
@@ -252,8 +261,8 @@
         y.addEventListener("click", function () { toggleButtons(y.id); });
     }
 
-    decideModesOptions("paragraph", "keyPoints", "mode", "checked", "value");
-    decideModesOptions("extractive", "abstractive", "option", "checked", "value");
+    decideModesOptions("paragraph", "keyPoints", "mode", "checked");
+    decideModesOptions("extractive", "abstractive", "option", "checked");
 
 </script>
 

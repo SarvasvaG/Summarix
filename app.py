@@ -7,14 +7,9 @@ import datetime
 
 import extractive
 import Email
-# from transformers import pipeline,AutoModelForSeq2SeqLM
-# model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
 
-# model_ckpt = "google/flan-t5-base"
-# pipe = pipeline('summarization', model=model_ckpt)
-
-# import model
-# import testm
+import model
+import abstractive
 
 app = Flask(__name__)
 
@@ -55,28 +50,46 @@ def input():
         s = request.form['inputText']
         f = request.files['documentUpload']
         kp = request.form['mode']
+        type_sum = request.form['option']
         summary = ""
         
         if(not kp or (not s and not f)):
             return render_template('input.html',text = s) 
-        
-        if(f):
-            uploaded_file_contents = f.read()
+        if(type_sum == "extractive"):
+            if(f):
+                uploaded_file_contents = f.read()
 
-            if (f.filename.endswith('.pdf')):
-                text = extract_text_from_pdf(uploaded_file_contents)
-            elif f.filename.endswith('.docx'):
-                text = extract_text_from_docx(uploaded_file_contents)
-            else:
-                text = extract_text_from_txt(uploaded_file_contents)
-            
-            summary += extractive.summarize(text,size,kp)
-            return render_template('output.html',out = summary, inp = text,size = size,type = kp)
+                if (f.filename.endswith('.pdf')):
+                    text = extract_text_from_pdf(uploaded_file_contents)
+                elif f.filename.endswith('.docx'):
+                    text = extract_text_from_docx(uploaded_file_contents)
+                else:
+                    text = extract_text_from_txt(uploaded_file_contents)
+                
+                summary += extractive.summarize(text,size,kp)
+                return render_template('output.html',out = summary, inp = text,size = size,type = kp,type_sum = type_sum)
 
-        if(s):
-            summary += extractive.summarize(s,size,kp)
-            return render_template('output.html',out = summary, inp = s,size = size,type = kp)
-        
+            if(s):
+                summary += extractive.summarize(s,size,kp)
+                return render_template('output.html',out = summary, inp = s,size = size,type = kp,type_sum = type_sum)
+
+        if(type_sum == "abstractive"):
+            if(f):
+                uploaded_file_contents = f.read()
+
+                if (f.filename.endswith('.pdf')):
+                    text = extract_text_from_pdf(uploaded_file_contents)
+                elif f.filename.endswith('.docx'):
+                    text = extract_text_from_docx(uploaded_file_contents)
+                else:
+                    text = extract_text_from_txt(uploaded_file_contents)
+                
+                summary += abstractive.summarize(text,size,model.pipe,kp)
+                return render_template('output.html',out = summary, inp = text,size = size,type = kp,type_sum = type_sum)
+
+            if(s):
+                summary += abstractive.summarize(s,size,model.pipe,kp)
+                return render_template('output.html',out = summary, inp = s,size = size,type = kp,type_sum = type_sum)        
         summary = ""
         f = None
     return render_template('input.html')
