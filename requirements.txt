@@ -14,7 +14,6 @@ charset-normalizer==3.3.0
 click==8.1.7
 colorama==0.4.6
 comtypes==1.2.0
-datasets==2.14.6
 dill==0.3.7
 distlib==0.3.7
 Django==4.2.6
