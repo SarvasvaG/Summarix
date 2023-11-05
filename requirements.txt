@@ -2,4 +2,4 @@ docx==0.2.4
 Flask==2.2.4
 Flask-SQLAlchemy==3.0.5
 PyPDF2==3.0.1
-transformers==4.35.0
+transformers==4.30.2
