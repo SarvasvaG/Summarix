@@ -3,6 +3,10 @@
 @import url('./partials/footer.css');
 @import url('./partials/inputOutput.css');
 
+.part2 {
+    width: 50%;
+}
+
 .part2 .outputBox {
     height: 50vh;
     width: 100%;
@@ -75,6 +79,9 @@
 }
 
 @media (max-width: 768px) {
+    .part2 {
+        width: 100%;
+    }
 
     .inputSection {
         width: 80%;

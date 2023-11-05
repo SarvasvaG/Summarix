@@ -67,13 +67,13 @@ function decideModesOptions(s1, s2, s3, s4) {
         if (id == s1) {
             x.classList.add(s4);
             y.classList.remove(s4);
-            z.changeVal = s1;
+            z.value = s1;
         }
 
         if (id == s2) {
             x.classList.remove(s4);
             y.classList.add(s4);
-            z.changeVal = s2;
+            z.value = s2;
         }
         console.log(z);
     }
@@ -82,5 +82,5 @@ function decideModesOptions(s1, s2, s3, s4) {
     y.addEventListener("click", function () { toggleButtons(y.id); });
 }
 
-decideModesOptions("paragraph", "keyPoints", "mode", "checked", "value");
-decideModesOptions("extractive", "abstractive", "option", "checked", "value");
+decideModesOptions("paragraph", "keyPoints", "mode", "checked");
+decideModesOptions("extractive", "abstractive", "option", "checked");

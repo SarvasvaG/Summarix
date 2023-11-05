@@ -85,6 +85,10 @@
     box-shadow: 0 0 15px 0 var(--white);
 }
 
+.content .email{
+    font-size: 17.5px;
+    color: #CCCCCC;
+}
 .hide {
     display: none;
 }
@@ -111,6 +115,14 @@
         width: 70%;
         flex-direction: column;
     }
+    
+    .contentContainer h1{
+        font-size: 30px;
+    }
+
+    .contentContainer p{
+        font-size: 15px;
+    }
 
     .btn {
         font-size: 25px;
@@ -123,6 +135,10 @@
     .content p {
         font-size: 15px;
         line-height: 20px;
+    }
+
+    .content .email{
+        font-size: 12.5px;
     }
 
     .content img {
