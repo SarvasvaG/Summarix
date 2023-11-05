@@ -87,7 +87,7 @@
 
 .content .email{
     font-size: 17.5px;
-    color: #CCCCCC;
+    color: var(--gray);
 }
 .hide {
     display: none;
@@ -107,6 +107,10 @@
         font-size: 30px;
     }
 
+    .section2 p{
+        font-size: 15px;
+    }
+
     .contentContainer {
         justify-content: space-between;
     }
@@ -115,21 +119,13 @@
         width: 70%;
         flex-direction: column;
     }
-    
-    .contentContainer h1{
-        font-size: 30px;
-    }
-
-    .contentContainer p{
-        font-size: 15px;
-    }
 
     .btn {
         font-size: 25px;
     }
 
     .content h3 {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .content p {
