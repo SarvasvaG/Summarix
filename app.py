@@ -53,7 +53,7 @@ def input():
         type_sum = request.form['option']
         summary = ""
         
-        if(not kp or (not s and not f)):
+        if((not kp) or (not type_sum) or (not s and not f)):
             return render_template('input.html',text = s) 
         if(type_sum == "extractive"):
             if(f):
