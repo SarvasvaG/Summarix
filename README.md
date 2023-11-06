@@ -5,6 +5,8 @@
 In today's information-driven landscape, individuals and organizations grapple with the overwhelming influx of textual content, spanning research papers, articles, legal documents, and reports. This deluge of data presents a formidable challenge—how to discern and extract vital insights from extensive documents swiftly. The "AI-Powered Document Summarizer" seeks to address this challenge by offering an automated solution for distilling essential information into coherent, easily digestible summaries.
 
 ### Get Started
+Before starting the below requirements, install python>=3.8.0 and pip from https://www.python.org/downloads/
+
 1. Clone the repository https://github.com/SarvasvaG/Summarix by using the following bash command:
    
    ```console
@@ -27,8 +29,10 @@ email = "anvit_g@cs.iitr.ac.in"
    ```python
    python app.py
    ```
-
    The server will start running on the specified 8000 port. Open any brwoser and type  "http://localhost:8000/".
    **Congragulations! You have started the Summarix.** Try summarizing some documents and texts.
+
+5. **About the contact form**
+   The email, message and name of the user will be stored in a file named "Document.db" in "instance" folder in the same working directory as app.py.  
 
 In case of any problem faced in Summarix, feel free to contact any member on the about page, either via email or any professional social media application. We are always there to help you.
