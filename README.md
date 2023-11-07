@@ -20,9 +20,7 @@ Before starting the below requirements, install python>=3.8.0 and pip from https
    ```
    
 3. After installing all the packages, add a python file, named ***secretsEmail.py***, in the same directory as app.py, containing email and password of the sender, through with the email will be sent to the respective user on submission of the contact form. For example,
-   
-password = "AG@1235" ,
-email = "anvit_g@cs.iitr.ac.in"
+   password = "AG@1235" , email = "anvit_g@cs.iitr.ac.in"
 
 4. Finally, run the application by the following python command:
 
