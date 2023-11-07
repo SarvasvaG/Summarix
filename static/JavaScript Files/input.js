@@ -34,20 +34,27 @@ customUploadButton.addEventListener("click", function () {
 const textArea = document.getElementById('textArea');
 const wordCount = document.getElementById('wordCount');
 
-//To make sure that word count is displayed initiallly.
+function checkWordCount(){
 if (textArea) {
     const text = textArea.value;
     const words = text.split(/\s+/).filter(word => word.length > 0);
     wordCount.textContent = words.length + "/10000 words";
+
+    if(words.length>10000){
+        wordCount.textContent=words.length + "/10000 words !!";
+        wordCount.classList.add("red");
+    }
+
+    else{
+        wordCount.textContent=words.length + "/10000 words";
+        wordCount.classList.remove("red");
+    }
+}
 }
 
-//When ever use writes input
+checkWordCount();
 textArea.addEventListener('input', function () {
-    if (textArea) {
-        const text = textArea.value;
-        const words = text.split(/\s+/).filter(word => word.length > 0);
-        wordCount.textContent = words.length + "/10000 words";
-    }
+    checkWordCount();
 });
 
 //Checkboxes for paragraph and key points
