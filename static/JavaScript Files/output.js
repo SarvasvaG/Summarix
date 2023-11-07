@@ -33,6 +33,7 @@ customUploadButton.addEventListener("click", function () {
 //Word Count
 const textArea = document.getElementById('textArea');
 const wordCount1 = document.getElementById('wordCount1');
+const currWords = document.getElementById('currWords');
 
 function checkWordCount() {
     if (textArea) {
@@ -49,6 +50,8 @@ function checkWordCount() {
             wordCount1.textContent = words.length + "/10000 words";
             wordCount1.classList.remove("red");
         }
+
+        currWords.value = words.length;
     }
 }
 

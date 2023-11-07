@@ -33,23 +33,26 @@ customUploadButton.addEventListener("click", function () {
 //Displaying the Word Count
 const textArea = document.getElementById('textArea');
 const wordCount = document.getElementById('wordCount');
+const currWords = document.getElementById('currWords');
 
-function checkWordCount(){
-if (textArea) {
-    const text = textArea.value;
-    const words = text.split(/\s+/).filter(word => word.length > 0);
-    wordCount.textContent = words.length + "/10000 words";
+function checkWordCount() {
+    if (textArea) {
+        const text = textArea.value;
+        const words = text.split(/\s+/).filter(word => word.length > 0);
+        wordCount.textContent = words.length + "/10000 words";
 
-    if(words.length>10000){
-        wordCount.textContent=words.length + "/10000 words !!";
-        wordCount.classList.add("red");
+        if (words.length > 10000) {
+            wordCount.textContent = words.length + "/10000 words !!";
+            wordCount.classList.add("red");
+        }
+
+        else {
+            wordCount.textContent = words.length + "/10000 words";
+            wordCount.classList.remove("red");
+        }
+
+        currWords.value = words.length;
     }
-
-    else{
-        wordCount.textContent=words.length + "/10000 words";
-        wordCount.classList.remove("red");
-    }
-}
 }
 
 checkWordCount();
